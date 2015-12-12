@@ -1,31 +1,43 @@
 'use strict'
-const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const app = express();
-const request = require('request');
+let express = require('express');
+let logger = require('morgan');
+let request = require('request');
+let path = require('path');
+let bodyParser = require('body-parser');
+// let User = require('/models/user');
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/running-app');
+// require our routes
+// let userRoutes = require('./controllers/users_contoller');
+let airportRoutes = require('./controllers/runs_controller');
 
-/* checking if connected to mongoose */
-let db = mongoose.connection;
-db.on('error', console.errog.bind(console, 'Connection error'));
-db.once('open', function (callback){
-  console.log('Mongoose connected');
-});
-
-const routes = require('./config/routes');
+let app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlenconded{extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// adding angular static route
-app.use('/', express.static(__dirname + '/public'));
-app.use('/scripts', express.static(__dirnmae + '/node_modules'));
-app.use(routes);
+// connect to our database, running_app name of database
+let mongoose = require('mongoose');
+mongoose.connect(process.env.MONGOLARB_URI || 'mongodb://localhost:27017/running_app');
+// note that 'running_app' name must match the local dtabase name
 
+/* check if connected to mongoose */
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error'));
+db.once('open', (callback) => {
+  console.log('Mongoose connected');
+});
+
+// Register the required routes
+// all routes starting with /users will be in the userRoutes
+// app.use('/users', userRoutes);
+// all route starting with /runs will be in the runRoutes
+// app.use('/runs', runRoutes);
+
+// const routes = require('./config/routes');
+
+// if using Heroku, then will use process.env.PORT; otherwise local port 3000
 let server = app.listen(process.env.PORT || 3000, () => {
   let host = server.address().address;
   let port = server.address().port;
