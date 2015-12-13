@@ -21,8 +21,3 @@ let runSchema = new mongoose.Schema({
 let Run = mongoose.model('myruns', runSchema);
 
 module.exports = Run;
-
-
-
-
-    ////////
