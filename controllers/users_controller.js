@@ -74,7 +74,7 @@ router.route('/')
 router.route('/:id')
   // GET a specific User
   // .get(usersController.getUser)
-
+  
   .get((req, res, next) => {
     // console.log("req.headers.host: " + req.headers.host);
     // console.log(req.headers);
