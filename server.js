@@ -31,7 +31,7 @@ db.once('open', (callback) => {
 
 // Register the required routes
 // all routes starting with /users will be in the userRoutes
-// app.use('/users', userRoutes);
+app.use('/users', userRoutes);
 // all route starting with /runs will be in the runRoutes
 // app.use('/runs', runRoutes);
 

@@ -13,6 +13,8 @@ let router = express.Router();
 
 var userToken;
 
+// POST (Authenticate) a User before logging in
+// .post(usersController.authenticate)
 router.route('/authenticate')
   .post((req, res) => {
     console.log('hit/users/authenticate');
@@ -44,19 +46,35 @@ router.route('/authenticate')
 }); // ends .post
 
 
-// gets & displays all of the information of all Users in the database
+// Gets & displays all of the information of all Users in the database
 router.route('/')
   .get((req, res, next) => {
     console.log ('Hit / route in /users => /users/');
     User.find([], (err, user) => {
+      console.log(user);
       if(err) throw err;
       res.send(user);
-      console.log('These are all the Users in the database');
+      console.log('These are all the Users in running_app database');
     });
   }); // ends .get
 
-// gets & displays the information of a User given an ID in the database
+  // .get(usersController_getAll);
+  //
+  // function usersController_getAll(req, res, next) {
+  //   console.log ('Hit / route in /users => /users/');
+  //   User.find([], (err, user) => {
+  //     if(err) throw err;
+  //     // if(err) response.json({message: 'Could not find any User in database'});
+  //     res.send(user);
+  //     console.log('These are all the Users in the database');
+  //   });
+  // };
+
+// Gets & displays the information of a User given an ID in the database
 router.route('/:id')
+  // GET a specific User
+  // .get(usersController.getUser)
+
   .get((req, res, next) => {
     // console.log("req.headers.host: " + req.headers.host);
     // console.log(req.headers);
@@ -68,6 +86,10 @@ router.route('/:id')
       console.log("the user data in GET by :id request: " + user);
     }); // ends User.find
   }) // ends .get for /:id
+
+
+  // PUT (Edit) a specific User
+  // .put(usersController.updateUser)
 
   .put((req, res) => {
     console.log('hit /users/:id POST route');
@@ -84,13 +106,12 @@ router.route('/:id')
   });
 
 router.route('/signup')
+  // POST (Create) a new User
+  //.post(usersController.createUser)
   .post ((req, res) => {
     let newUser = new User(req.body);
     console.log("Data for new User: " + req.body);
     newUser.save();
   }); // ends .post for /signup
-
-module.exports = router;
-
 
 module.exports = router;
