@@ -9,7 +9,9 @@ function UsersController($http){
   // Our CREED functions
   self.all = [];
   self.getAllUsers = getAllUsers;
-  // self.newUser = {};
+  self.addUser = addUser;
+  self.newUser = {};
+
   // self.getUser = getUser;
   // self.editUser = editUser;
 
@@ -26,17 +28,19 @@ function UsersController($http){
       }); // close .then
   } // close function getAllUsers()
 
+function addUser(){
+  $http
+    .post('http://localhost:3000/users/signup', self.newUser)
+    .then(function(response){
+      getAllUsers();
+  });
+}
+
+
 } // close function UsersController($http)
 
 
-// function newUser(){
-//   $http
-//     .post('http://localhost:3000/users/signup', self.newUser)
-//     .then(function(response){
-//       getUsers();
-//   });
-// }
-//
+
 // function getUser(){
 //   $http
 //     .get('http://localhost:3000/users/' = myID)

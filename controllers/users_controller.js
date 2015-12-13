@@ -58,6 +58,7 @@ router.route('/')
     });
   }); // ends .get
 
+  // Lines below attempting to refactor code => pending for last
   // .get(usersController_getAll);
   //
   // function usersController_getAll(req, res, next) {
@@ -70,11 +71,11 @@ router.route('/')
   //   });
   // };
 
+
 // Gets & displays the information of a User given an ID in the database
 router.route('/:id')
   // GET a specific User
   // .get(usersController.getUser)
-  
   .get((req, res, next) => {
     // console.log("req.headers.host: " + req.headers.host);
     // console.log(req.headers);
@@ -90,7 +91,6 @@ router.route('/:id')
 
   // PUT (Edit) a specific User
   // .put(usersController.updateUser)
-
   .put((req, res) => {
     console.log('hit /users/:id POST route');
     console.log(req.params.id);
