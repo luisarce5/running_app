@@ -4,7 +4,21 @@ let bcrypt = require('bcrpt');
 let SALT_WORK_FACTOR = 5;
 
 let userSchema = new mongoose.Schema({
-
+  username: String,
+  email: String,
+  user_description: String,
+  city: String,
+  profile_photo: String,
+  created_at: Date,
+  updated_at: Date,
+  password: String,
+  token: String,
+  myRuns: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Run'
+    }
+  ]
 });
 
 //Before saving a paswword, encrypt it.
