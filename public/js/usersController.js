@@ -11,6 +11,10 @@ function UsersController($http){
   self.getAllUsers = getAllUsers;
   self.addUser = addUser;
   self.newUser = {};
+  // new 2 lines below
+
+  self.authenticateUser = authenticateUser;
+  self.loginUser = {};
 
   // self.getUser = getUser;
   // self.editUser = editUser;
@@ -28,14 +32,25 @@ function UsersController($http){
       }); // close .then
   } // close function getAllUsers()
 
-function addUser(){
-  $http
-    .post('http://localhost:3000/users/signup', self.newUser)
-    .then(function(response){
-      getAllUsers();
-  });
-}
+  function addUser(){
+    $http
+      .post('http://localhost:3000/users/signup', self.newUser)
+      .then(function(response){
+        getAllUsers(); // do I need this line?
+    });
+  }
 
+  // NEW CODE BELOW - WORK IN PROGRESS
+  //Authenticate a User as User logs in
+
+  function authenticateUser(){
+    $http
+    .post('http://localhost:3000/users/authenticate', self.loginUser)
+    .then(function(response){
+      console.log("Running inside authenticateUser()");
+      console.log(response.data);
+    });
+  }
 
 } // close function UsersController($http)
 

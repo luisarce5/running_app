@@ -54,7 +54,7 @@ router.route('/')
       console.log(user);
       if(err) throw err;
       res.send(user);
-      console.log('These are all the Users in running_app database');
+      console.log('All the Users in running_app database just displayed above');
     });
   }); // ends .get
 
@@ -105,13 +105,16 @@ router.route('/:id')
     // console.log(userData);
   });
 
-router.route('/signup')
-  // POST (Create) a new User
-  //.post(usersController.createUser)
-  .post ((req, res) => {
-    let newUser = new User(req.body);
-    console.log("Data for new User: " + req.body);
-    newUser.save();
-  }); // ends .post for /signup
+
+
+  router.route('/signup')
+    // POST (Create) a new User
+    //.post(usersController.createUser)
+    .post ((req, res) => {
+      console.log('hit users/signup with POST request.');
+      let newUser = new User(req.body);
+      console.log("Data for new User: " + req.body);
+      newUser.save();
+    }); // ends .post for /signup
 
 module.exports = router;

@@ -27,17 +27,17 @@
           <a href='/' class='navbar-brand'> Log my Run </a>
 
           <ul class='nav navbar-nav navbar-right'>
-              <li><a href="#" id="login-link"  > Log In </a> </li>
-              <li><a href="#" id="signup-link" ng-click="SignUp=true"> Sign Up </a> </li>
-              <li><a href="#" id="my-profile"  > View My Profile </a> </li>
-              <li><a href="#" id="logout-link" > Logout </a> </li>
+              <li><a href="#" id="login-link"  ng-click="Login=true"> Log In </a> </li>
+              <li><a href="#" id="signup-link" ng-click="SignUp=true" > Sign Up </a> </li>
+              <li><a href="#" id="my-profile"  ng-show="false" > View My Profile </a> </li>
+              <li><a href="#" id="logout-link" ng-show="false" > Logout </a> </li>
           </ul>
 
       </div> <!-- close div class ='container navbar navbar...' -->
 
       <div class='row well well-lg row-margin'>
           <div class='col-md-12'>
-              <h3> The Easiest Way to Track your Run Workouts </h3>
+              <h3> The Easiest Way to Track your Running Workouts </h3>
               <p class='lead'> Keep a running journal, track your progress, plan your running routes. </p>
               <button ng-click="viewAllUsers=true"> View List of Public Users </button>
               <button type='button'> Log a New Workout </button>
@@ -58,24 +58,45 @@
           </ul>
 
       </section>
-        <!-- This is the new code -->
+
+        <!-- NEW CODE BELOW  -->
+      <!-- <section ng-controller="UserController as users" ng-show="Login">
+
+        <form class="login-User" ng-submit="users.authenticateUser()">
+            <div>
+              <label for="login-username"> User Name: </label>
+              <input type="text" id="login-username" placeholder="username" ng-model="users.loginUser.username">
+            </div>
+
+            <div>
+              <label for="login-password"> Password: </label>
+              <input type="text" id="login-password" placeholder="password" ng-model="users.loginUser.password">
+            </div>
+          </form>
+      </section> -->
+
 
       <section ng-controller="UsersController as users" ng-show="SignUp">
 
-          <form class="add-User" ng-submit ='users.addUser()'>
+          <form class="add-User" ng-submit='users.addUser()' >
               <div>
                 <label for="new-user-username"> User Name: </label>
-                <input type="text" id="new-user-username" placeholder"username" ng-model='users.newUser.username'>
+                <input type="text" id="new-user-username" placeholder="Username" ng-model='users.newUser.username'>
               </div>
 
               <div>
                 <label for="new-user-email"> Email: </label>
-                <input type="text" id="new-user-email" placeholder"email" ng-model='users.newUser.email'>
+                <input type="text" id="new-user-email" placeholder="email@example.com" ng-model='users.newUser.email'>
               </div>
 
               <div>
                 <label for="new-user-password"> Password: </label>
-                <input type="text" id="new-user-password" placeholder"password" ng-model='users.newUser.password'>
+                <input type="text" id="new-user-password" placeholder="password" ng-model='users.newUser.password'>
+              </div>
+
+              <div>
+                <label for="new-user-city"> City: </label>
+                <input type="text" id="new-user-city" placeholder="City" ng-model='users.newUser.city'>
               </div>
 
               <div>
@@ -83,9 +104,11 @@
               </div>
           </form>
 
-      <div>  <!-- closing <section ng-controller .... -->
-
       </section>
+
+        <div class="succesful-signup">
+          <p> You have succesfully created a new account.  You can now log in.</p>
+        </div>
 
       <div class='row'>
           <div class='col-md-4'>

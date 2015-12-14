@@ -24,13 +24,14 @@ let userSchema = new mongoose.Schema({
 //Before saving a paswword, encrypt it.
 userSchema.pre('save', function(next) {
   let user = this;
+  console.log("The user info is displayed below:")
   console.log(user);
 
   // hash the password only if it is new or has been modified
   if (!user.isModified('password')) return next();
 
   // generate a SALT
-  bycrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
+  bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
     if (err) return next (err);
 
   // has the password annd the newly generaled salt
