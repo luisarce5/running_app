@@ -63,20 +63,18 @@
               </ul>
           </div>
 
-          <!-- <div class="user-profile" ng-show="viewProfile">
+          <div class="user-profile" ng-show="viewProfile" ng-model='users.userData'>
               <h5> My Profile</h5>
 
               <ul id='myprofile'>
-                  <li ng-repeat="user in users.all" >
-                    Username: {{user.username}},
-                    City: {{user.city}}
+                  <!-- <li ng-repeat="user in users.all" > -->
+                  <li>
+                    Username: {{users.userData.username}},
+                    City: {{users.userData.city}}
                   </li>
               </ul>
-          </div> -->
+          </div>
 
-      <!-- </section>
-
-        <section ng-controller="UsersController as users"> -->
 
             <form class="login-User" ng-submit="users.authenticateUser()" ng-show="Login" >
                 <div>

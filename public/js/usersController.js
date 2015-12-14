@@ -8,19 +8,30 @@ function UsersController($http){
   let self = this;
   // Our CREED functions
   self.all = [];
-  self.getAllUsers = getAllUsers;
-  self.addUser = addUser;
-  self.newUser = {};
-  // new 2 lines below
+  self.getAllUsers = getAllUsers; //// function () defined below
+  self.addUser = addUser; // function () defined below
+  self.newUser = {}; // newUser{} gets its data from add-user Form @ index.html and passes it to addUser()
+  self.authenticateUser = authenticateUser; // function () defined below
+  self.loginUser = {}; // loginUser{} gets its data from login-User Form @ index.html and passes it to authenticateUser()
 
-  self.authenticateUser = authenticateUser;
-  self.loginUser = {};
+  // new code lines below - WORK IN PROGRESS
 
-  // self.getUser = getUser; // Work in Progress
+  self.currentUserID = [];
+  console.log('from Line 20 self.currentUserID: ' + self.currentUserID);
+
+  // self.userData = [];
+  // console.log("Here is the userData from line 21");
+  // console.log(userData);
+
+  self.getUser = getUser; // function () defined below
+
+  // END OF WORK IN PROGRESS
 
   // self.editUser = editUser;
 
   getAllUsers();
+  // getUser();
+
   console.log("just invoked getAllUsers()");
 
   function getAllUsers(){
@@ -41,25 +52,31 @@ function UsersController($http){
     });
   }
 
-  // NEW CODE BELOW - WORK IN PROGRESS
-  //Authenticate a User as User logs in
-
   function authenticateUser(){
     $http
     .post('http://localhost:3000/users/authenticate', self.loginUser)
     .then(function(response){
       console.log("Running inside authenticateUser()");
       console.log(response.data);
+      console.log(response.data.user._id);
+      self.currentUserID = response.data.user._id;
+      console.log('From authenticateUser() => self.currentUserID = ' + self.currentUserID);
     });
+    // getUser();
   }
 
+  function getUser(){
+    $http
+    .get('http://localhost:3000/users/' + currentUserID )
+    .then(function(response){
+      console.log("Running inside getUser()");
+      console.log(response.data);
+      self.userData = response.data;
+    });
 
+  }
 
-  // { // User views his profile
-  //   url: '/users/' + myId
-  // }
-
-
+// pending to define currentUserID
 
 } // close function UsersController($http)
 
