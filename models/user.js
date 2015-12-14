@@ -49,7 +49,7 @@ userSchema.pre('save', function(next) {
 userSchema.methods.authenticate = function(password, callback) {
   // compare method that returns a boolean
   // determine if the first argument once encrypted corresponds to the second argument
-  bycrypt.compare(password, this.password, function(err, isMatch) {
+  bcrypt.compare(password, this.password, function(err, isMatch) {
     if (err) return callback(err);
     callback(null, isMatch);
   });
