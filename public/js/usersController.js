@@ -16,7 +16,8 @@ function UsersController($http){
   self.authenticateUser = authenticateUser;
   self.loginUser = {};
 
-  // self.getUser = getUser;
+  // self.getUser = getUser; // Work in Progress
+
   // self.editUser = editUser;
 
   getAllUsers();
@@ -52,6 +53,14 @@ function UsersController($http){
     });
   }
 
+
+
+  // { // User views his profile
+  //   url: '/users/' + myId
+  // }
+
+
+
 } // close function UsersController($http)
 
 
@@ -60,20 +69,20 @@ function UsersController($http){
 //   $http
 //     .get('http://localhost:3000/users/' = myID)
 //     .then()
-// }
+// } √√√ √√√ √√√ √√√ √√√
 //
 //  ######## AJAX ###########
 //
-//  { // Create a new User
+//  { // Create/Add a new User
 //   url: '/users/signup',
 //   method: 'POST',
-// } √√√
+// } √√√ √√√ √√√ √√√ √√√
 //
 // { // verify a User
 // url: '/users/authenticate'
 // method: "POST"
 // data: user
-// }
+// } √√√ √√√ √√√ √√√ √√√
 //
 // { // User views his profile
 //   url: '/users/' + myId
