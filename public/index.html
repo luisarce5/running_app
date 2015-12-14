@@ -64,34 +64,33 @@
           </div>
 
           <div class="user-profile" ng-show="viewProfile" ng-model='users.userData'>
-              <h5> My Profile</h5>
-
-              <ul id='myprofile'>
-                  <!-- <li ng-repeat="user in users.all" > -->
-                  <li>
-                    Username: {{users.userData[0].username}},
-                    City: {{users.userData[0].city}}
-                  </li>
-              </ul>
+              <h5> <strong> My Profile </strong> </h5>
+              <table>
+                <tr><th> Field        </th><th> Details </th></tr>
+                <tr><td> Username:    </td><td> {{users.userData[0].username}} </td></tr>
+                <tr><td> Email:       </td><td> {{users.userData[0].email}} </td></tr>
+                <tr><td> Description: </td><td> {{users.userData[0].user_description}} </td></tr>
+                <tr><td> City:        </td><td> {{users.userData[0].city}} </td></tr>
+                <tr><td> My Runs:     </td><td> Pending </td></tr>
+              </table>
           </div>
 
+          <form class="login-User" ng-submit="users.authenticateUser()" ng-show="Login" >
+              <div>
+                <label for="login-username"> User Name Login: </label>
+                <input type="text" id="login-username" placeholder="username" ng-model="users.loginUser.username">
+              </div>
 
-            <form class="login-User" ng-submit="users.authenticateUser()" ng-show="Login" >
-                <div>
-                  <label for="login-username"> User Name Login: </label>
-                  <input type="text" id="login-username" placeholder="username" ng-model="users.loginUser.username">
-                </div>
+              <div>
+                <label for="login-password"> Password Login: </label>
+                <input type="text" id="login-password" placeholder="password" ng-model="users.loginUser.password">
+              </div>
 
-                <div>
-                  <label for="login-password"> Password Login: </label>
-                  <input type="text" id="login-password" placeholder="password" ng-model="users.loginUser.password">
-                </div>
+              <div>
+                <input type="submit" value="Login" class="md-button md-raised">
+              </div>
 
-                <div>
-                  <input type="submit" value="Login" class="md-button md-raised">
-                </div>
-
-            </form>
+          </form>
 
 
           <form class="add-User" ng-submit='users.addUser()' ng-show="SignUp">
