@@ -85,7 +85,9 @@ router.route('/:id')
     User.find({_id: req.params.id}, (err, user) => {
       if (err) return next(err);
       res.send(user);
-      console.log("the user data in GET by :id request: " + user);
+      console.log("Below the user data in GET by :id request: ")
+      console.log(user);
+      console.log(user[0].username);
     }); // ends User.find
   }) // ends .get for /:id
 

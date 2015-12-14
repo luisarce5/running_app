@@ -19,7 +19,7 @@ function UsersController($http){
   self.currentUserID = [];
   console.log('from Line 20 self.currentUserID: ' + self.currentUserID);
 
-  // self.userData = [];
+  self.userData = [];
   // console.log("Here is the userData from line 21");
   // console.log(userData);
 
