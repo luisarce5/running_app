@@ -60,42 +60,40 @@
       </section>
 
         <!-- NEW CODE BELOW  -->
-      <!-- <section ng-controller="UserController as users" ng-show="Login">
 
-        <form class="login-User" ng-submit="users.authenticateUser()">
-            <div>
-              <label for="login-username"> User Name: </label>
-              <input type="text" id="login-username" placeholder="username" ng-model="users.loginUser.username">
-            </div>
+        <section ng-controller="UsersController as users">
 
-            <div>
-              <label for="login-password"> Password: </label>
-              <input type="text" id="login-password" placeholder="password" ng-model="users.loginUser.password">
-            </div>
-          </form>
-      </section> -->
+            <form class="login-User" ng-submit="users.authenticateUser()" ng-show="Login">
+                <div>
+                  <label for="login-username"> User Name Login: </label>
+                  <input type="text" id="login-username" placeholder="username" ng-model="users.loginUser.username">
+                </div>
 
-
-      <section ng-controller="UsersController as users" ng-show="SignUp">
-
-          <form class="add-User" ng-submit='users.addUser()' >
+                <div>
+                  <label for="login-password"> Password Login: </label>
+                  <input type="text" id="login-password" placeholder="password" ng-model="users.loginUser.password">
+                </div>
+              </form>
+            </section>
+  
+          <form class="add-User" ng-submit='users.addUser()' ng-show="SignUp">
               <div>
-                <label for="new-user-username"> User Name: </label>
+                <label for="new-user-username"> User Name Sign: </label>
                 <input type="text" id="new-user-username" placeholder="Username" ng-model='users.newUser.username'>
               </div>
 
               <div>
-                <label for="new-user-email"> Email: </label>
+                <label for="new-user-email"> Email Sign: </label>
                 <input type="text" id="new-user-email" placeholder="email@example.com" ng-model='users.newUser.email'>
               </div>
 
               <div>
-                <label for="new-user-password"> Password: </label>
+                <label for="new-user-password"> Password Sign: </label>
                 <input type="text" id="new-user-password" placeholder="password" ng-model='users.newUser.password'>
               </div>
 
               <div>
-                <label for="new-user-city"> City: </label>
+                <label for="new-user-city"> City Sign: </label>
                 <input type="text" id="new-user-city" placeholder="City" ng-model='users.newUser.city'>
               </div>
 
