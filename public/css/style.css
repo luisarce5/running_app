@@ -5,5 +5,15 @@
   padding-bottom: 25px;
 }
 
+#actions-box {
+  border: 1px solid gray;
+}
+
+.login-User{
+  border: 1px solid gray;
+  padding: 15px;
+  width: 40%;
+  margin: 10px auto;
+}
 /*.navbar-fixed-top {
 }*/
