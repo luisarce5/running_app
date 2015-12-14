@@ -77,9 +77,10 @@ router.route('/:id')
   // GET a specific User
   // .get(usersController.getUser)
   .get((req, res, next) => {
+    console.log('hit/users/:id GET route');
     // console.log("req.headers.host: " + req.headers.host);
     // console.log(req.headers);
-    console.log("The req.params.id: ");
+    console.log("The req.params.id is next line: ");
     console.log(req.params.id);
     User.find({_id: req.params.id}, (err, user) => {
       if (err) return next(err);

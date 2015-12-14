@@ -14,7 +14,7 @@ function UsersController($http){
   self.authenticateUser = authenticateUser; // function () defined below
   self.loginUser = {}; // loginUser{} gets its data from login-User Form @ index.html and passes it to authenticateUser()
 
-  // new code lines below - WORK IN PROGRESS
+  // ##### WORK IN PROGRESS ##### new code lines below -
 
   self.currentUserID = [];
   console.log('from Line 20 self.currentUserID: ' + self.currentUserID);
@@ -25,7 +25,7 @@ function UsersController($http){
 
   self.getUser = getUser; // function () defined below
 
-  // END OF WORK IN PROGRESS
+  // ##### END OF WORK IN PROGRESS #####
 
   // self.editUser = editUser;
 
@@ -61,13 +61,17 @@ function UsersController($http){
       console.log(response.data.user._id);
       self.currentUserID = response.data.user._id;
       console.log('From authenticateUser() => self.currentUserID = ' + self.currentUserID);
+      $.data(document, "myUserID", self.currentUserID);
+      console.log("This is myUserID: " + ($.data(document, "myUserID")) );
     });
-    // getUser();
+    getUser();
   }
-
+ // + ($.data(document, "myUserID"))
   function getUser(){
+    let userID = ($.data(document, "myUserID"));
+    console.log("The userID = " + userID);
     $http
-    .get('http://localhost:3000/users/' + currentUserID )
+    .get('http://localhost:3000/users/566e1e394465fc3d65210b1b' )
     .then(function(response){
       console.log("Running inside getUser()");
       console.log(response.data);
