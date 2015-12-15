@@ -1,6 +1,8 @@
 'use strict';
 let mongoose = require('mongoose');
 let bcrypt = require('bcrypt');
+let runSchema = require('./run.js').schema // ADDED WORK IN PROGRESS
+
 let SALT_WORK_FACTOR = 5;
 
 let userSchema = new mongoose.Schema({
@@ -14,11 +16,11 @@ let userSchema = new mongoose.Schema({
   password: String,
   token: String,
   myRuns: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Run'
-    }
-  ]
+            {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: 'Run'
+            }
+          ]
 });
 
 //Before saving a paswword, encrypt it.

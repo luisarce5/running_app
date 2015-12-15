@@ -18,8 +18,6 @@ var userToken;
 router.route('/authenticate')
   .post((req, res) => {
     console.log('hit/users/authenticate');
-    // var response = "hit /users/test";
-    // res.send(response);
   User.findOne({
     username: req.body.username
   }, function(err, user) {
@@ -91,7 +89,6 @@ router.route('/:id')
     }); // ends User.find
   }) // ends .get for /:id
 
-
   // PUT (Edit) a specific User
   // .put(usersController.updateUser)
   .put((req, res) => {
@@ -107,8 +104,6 @@ router.route('/:id')
     // var userData = req.body.data;
     // console.log(userData);
   });
-
-
 
   router.route('/signup')
     // POST (Create) a new User

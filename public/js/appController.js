@@ -1,6 +1,8 @@
 'use strict';
+
 angular.module('TheRunningApp', [])
-  .controller('UsersController', UsersController);
+  .controller('UsersController', UsersController)
+  .controller('RunsController', RunsController)
 
 UsersController.$inject = ['$http'];
 
@@ -14,23 +16,14 @@ function UsersController($http){
   self.authenticateUser = authenticateUser; // function () defined below
   self.loginUser = {}; // loginUser{} gets its data from login-User Form @ index.html and passes it to authenticateUser()
 
-  // ##### WORK IN PROGRESS ##### new code lines below -
-
   self.currentUserID = [];
   console.log('from Line 20 self.currentUserID: ' + self.currentUserID);
-
   self.userData = [];
-  // console.log("Here is the userData from line 21");
-  // console.log(userData);
-
   self.getUser = getUser; // function () defined below
-
-  // ##### END OF WORK IN PROGRESS #####
 
   // self.editUser = editUser;
 
   getAllUsers();
-  // getUser();
 
   console.log("just invoked getAllUsers()");
 
@@ -76,28 +69,58 @@ function UsersController($http){
       console.log("Running inside getUser()");
       console.log(response.data);
       self.userData = response.data;
-    });
-
-  }
-
-// pending to define currentUserID
+    }); // close .then
+  } // close function getUser()
 
 } // close function UsersController($http)
 
 
+///////// Run controller
 
+RunsController.$inject = ['$http'];
+
+function RunsController($http){
+  let self = this;
+  // Our CREED functions
+  self.all = [];
+  // self.getAllUsers = getAllUsers; //// function () defined below
+  self.addRun = addRun; // function () defined below
+  self.newRun = {}; // newRun{} gets its data from add-run Form @ index.html and passes it to addRun()
+  // self.editRun = editRun;
+
+  // self.currentUserID = [];
+  // console.log('from Line 20 self.currentUserID: ' + self.currentUserID);
+  // self.userData = [];
+  // self.getUser = getUser; // function () defined below
+
+  function addRun(){
+    $http
+      .post('http://localhost:3000/users/566e1e394465fc3d65210b1b/runs', self.newRun)
+      .then(function(response){
+    });
+  }
+
+
+
+} // close function RunsController($http)
+
+
+
+
+//  ######## AJAX ###########
+//
 // function getUser(){
 //   $http
 //     .get('http://localhost:3000/users/' = myID)
 //     .then()
 // } √√√ √√√ √√√ √√√ √√√
 //
-//  ######## AJAX ###########
 //
 //  { // Create/Add a new User
 //   url: '/users/signup',
 //   method: 'POST',
 // } √√√ √√√ √√√ √√√ √√√
+//
 //
 // { // verify a User
 // url: '/users/authenticate'
@@ -105,10 +128,12 @@ function UsersController($http){
 // data: user
 // } √√√ √√√ √√√ √√√ √√√
 //
+//
 // { // User views his profile
 //   url: '/users/' + myId
-// }
+// } √√√ √√√ √√√ √√√ √√√
 //
+// *** PENDING PENDING PENDING ***
 // { // User edits his profile
 //   url: "users/" + currentUserID,
 // method: "PUT",

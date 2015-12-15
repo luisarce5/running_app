@@ -13,7 +13,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <script src="js/app.js"></script>
-    <script src="js/usersController.js"></script>
+    <script src="js/appController.js"></script>
+    <!-- <script src="js/runsController.js"></script> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <title>Running App</title>
@@ -22,7 +23,8 @@
   <body>
 
     <div class='container'>
-      <section ng-controller="UsersController as users">
+
+    <section ng-controller="UsersController as users">
 
       <div class='container navbar navbar-default navbar-fixed-top'>
           <a href='/' class='navbar-brand'> Log my Run App </a>
@@ -95,7 +97,6 @@
                 </div>
             </form>
 
-
           <form class="add-User" ng-submit='users.addUser()' ng-show="SignUp">
                 <h4> Sign Up New User </h4>
               <div>
@@ -123,53 +124,58 @@
               </div>
           </form>
 
-<!-- NEXT CODE - WORK IN PROGRESS -->
-          <form class="add-Run" ng-show="addRunForm">
+          <section ng-controller="RunsController as runs" ng-show="addRunForm">
+
+           <form class="add-Run" >
               <h4> Log Run Workout </h4>
 
               <div>
                 <label for="new-run-date"> Date: </label>
-                <input type="text" id="new-run-date" placeholder="MM/DD/YY e.g. 12/17/15" ng-model='users.newUser.username'>
+                <input type="text" id="new-run-date" placeholder="MM/DD/YY e.g. 12/17/15" ng-model='runs.newRun.date'>
               </div>
 
               <div>
                 <label for="new-run-distance"> Distance (miles): </label>
-                <input type="text" id="new-run-distance" placeholder="e.g 5" ng-model='users.newUser.email'>
+                <input type="text" id="new-run-distance" placeholder="e.g 5" ng-model='runs.newRun.distance'>
               </div>
 
               <div>
                 <label for="new-run-start_time"> Start Time: </label>
-                <input type="text" id="new-run-start_time" placeholder="(HH:MM) e.g. 17:00 " ng-model='users.newUser.password'>
+                <input type="text" id="new-run-start_time" placeholder="(HH:MM) e.g. 17:00 " ng-model='runs.newRun.start_time'>
               </div>
 
               <div>
                 <label for="new-run-duration"> Duration (in minutes): </label>
-                <input type="text" id="new-run-duration" placeholder="e.g. 45" ng-model='users.newUser.city'>
+                <input type="text" id="new-run-duration" placeholder="e.g. 45" ng-model='runs.newRun.duration'>
               </div>
 
               <div>
                 <label for="new-run-route"> Route (description): </label>
-                <input type="text" id="new-run-route" placeholder="eg. full loop in Central Park" ng-model='users.newUser.city'>
+                <input type="text" id="new-run-route" placeholder="eg. full loop in Central Park" ng-model='runs.newRun.route'>
               </div>
 
               <div>
                 <label for="new-run-type"> Run Type: </label>
-                <input type="text" id="new-run-type" placeholder="e.g. training or race" ng-model='users.newUser.city'>
+                <input type="text" id="new-run-type" placeholder="e.g. training or race" ng-model='runs.newRun.run_type'>
+              </div>
+
+              <div>
+                <label for="new-run-comments"> Comments: </label>
+                <input type="text" id="new-run-comments" placeholder="e.g. warm weather, speed training" ng-model='runs.newRun.comments'>
               </div>
 
               <div>
                 <label for="new-run-shoes"> Shoes: </label>
-                <input type="text" id="new-run-shoes" placeholder="e.g. Gel Kayano" ng-model='users.newUser.city'>
+                <input type="text" id="new-run-shoes" placeholder="e.g. Gel Kayano" ng-model='runs.newRun.shoes'>
               </div>
 
               <div>
                 <input type="submit" value="Log Run Workout" class="md-button md-raised">
               </div>
-          </form>
+            </form>
+          </section>
 
-<!-- END OF WORK IN PROGRESS  -->
-
-      </section>
+        </section>
 
         <div class="succesful-signup">
           <p> You have succesfully created a new account.  You can now log in.</p>
