@@ -6,6 +6,11 @@ angular.module('TheRunningApp', [])
 
 UsersController.$inject = ['$http'];
 
+// function UsersController($scope) { // Just added
+//   $scope.myProfile = true;
+//   $scope.logout = true;
+// }
+
 function UsersController($http){
   let self = this;
   // Our CREED functions

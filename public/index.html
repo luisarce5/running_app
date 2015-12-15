@@ -118,9 +118,13 @@
             </div>
 
             <div>
-              <input type="submit" value="Create New User" class="md-button md-raised">
+              <input type="submit" value="Create New User" class="md-button md-raised" g-click="SignUp=false">
             </div>
         </form>
+
+        <div class="succesful-signup" >
+          <p> You have succesfully created a new account.  You can now log in.</p>
+        </div>
 
           <section ng-controller="RunsController as runs" ng-show="addRunForm">
 
@@ -174,10 +178,6 @@
           </section>
 
       </section>
-
-      <div class="succesful-signup">
-        <p> You have succesfully created a new account.  You can now log in.</p>
-      </div>
 
       <div class='row'>
           <div class='col-md-4'>
