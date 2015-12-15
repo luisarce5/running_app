@@ -106,16 +106,19 @@ function UsersController($http){
         };
 
 
-        (function() {
+
+        var runLoop = function() {
           $http
           .get('http://localhost:3000/runs/' + self.myRunsData[0])
           .then(function(response){
             console.log("Inside getRun => data of specific Run listed below:");
-            console.log(response.data)
-            self.runData = response.data;
+            console.log("response.data[0] listed below");
+            console.log(response.data[0]);
+            self.runData = response.data[0];
           }); // close .then of nested $http  ;
-         })();
+        }; // close runLoop
 
+        runLoop();
 
       }); // close .then of outter $http
 
