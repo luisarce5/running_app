@@ -44,7 +44,7 @@
                 <p class="lead"> Keep a running journal, track your progress, plan your running routes. </p>
                 <button type="button" ng-click="addRunForm=true"> Log Run Workout </button>
                 <button type="button" ng-click="viewProfile=true" > View my Profile </button>
-                <button type="button" ng-click="viewRuns=true" > View my Runs </button>
+                <button type="button" ng-click="viewRuns=true; users.getRun()" > View my Runs </button>
                 <button type="button" ng-click="viewAllUsers=true" class=pull-right> View List of Public Users </button>
 
             </div> <!-- close div class="col-md-12" -->
@@ -78,7 +78,19 @@
             <button type="button" ng-click="editProfile=true" > Edit my Profile </button>
         </div> <!-- close div class="user-profile"-->
 
-
+        <!-- ******* VIEW RUNS FOR a USER ******* -->
+        <div class-"runs-list" ng-show="viewRuns" ng-model='users.runData'>
+             <h5> <strong> My Runs </strong> </h5>
+            <table>
+              <tr><th> Field        </th><th> Details </th></tr>
+              <tr><td> Date:        </td><td> {{users.runData[0].myRuns.date}} </td></tr>
+              <tr><td> Distance:    </td><td> {{users.runData[0].myRuns.distance}} </td></tr>
+              <tr><td> Start Time:  </td><td> {{users.runData[0].myRuns.start_time}} </td></tr>
+              <tr><td> Duration:    </td><td> {{users.runData[0].myRuns.duration}} </td></tr>
+              <tr><td> Route:       </td><td> {{users.runData[0].myRuns.route}} </td></tr>
+              <tr><td> Run Type:    </td><td> {{users.runData[0].myRuns.run_type}} </td></tr>
+            </table>
+        </div>
 
         <form class="login-User text-center" ng-submit="users.authenticateUser()" ng-show="Login" >
             <h4> Log In Existing User</h4>
@@ -132,19 +144,6 @@
           <!-- ******* SECTION FOR RUNS MODEL nested inside section for Users Model ******* -->
           <section ng-controller="RunsController as runs">
 
-            <!-- ******* VIEW RUNS FOR a USER ******* -->
-            <div class-"runs-list" ng-show="viewRuns" ng-model='runs.runData'>
-                 <h5> <strong> My Runs </strong> </h5>
-                <table>
-                  <tr><th> Field        </th><th> Details </th></tr>
-                  <tr><td> Date:        </td><td> {{runs.runData[0].myRuns.date}} </td></tr>
-                  <tr><td> Distance:    </td><td> {{runs.runData[0].myRuns.distance}} </td></tr>
-                  <tr><td> Start Time:  </td><td> {{runs.runData[0].myRuns.start_time}} </td></tr>
-                  <tr><td> Duration:    </td><td> {{runs.runData[0].myRuns.duration}} </td></tr>
-                  <tr><td> Route:       </td><td> {{runs.runData[0].myRuns.route}} </td></tr>
-                  <tr><td> Run Type:    </td><td> {{runs.runData[0].myRuns.run_type}} </td></tr>
-                </table>
-            </div>
 
            <form class="add-Run" ng-submit='runs.addRun()' ng-show="addRunForm">
               <h4> Log Run Workout </h4>

@@ -148,6 +148,7 @@ router.route('/:id')
         console.log("Below the user data in GET by users/:id/runs request: ")
         console.log(user);
         console.log(user[0].myRuns);
+        return;
       }); // ends User.find
     }); // ends .get for /:id
 // ***** Build route to VIEW ALL RUNS of a specific User by User ID *****
