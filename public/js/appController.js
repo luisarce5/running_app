@@ -32,6 +32,7 @@ function UsersController($http){
   // self.editUser = editUser;
 
   self.runData = []; // runData[] gets its data from getRun()
+  self.myRunsData = []; // runData[] gets its data from getRun()
   self.getRun = getRun; // function () defined below
 
   getAllUsers();
@@ -96,15 +97,27 @@ function UsersController($http){
       $http
       .get('http://localhost:3000/users/566e1e394465fc3d65210b1b/runs') // ?????
       .then(function(response){
-        console.log("Inside getRun() => myRuns data listed below:");
+        console.log("Inside getRun() => list of User's myRuns listed below:");
         console.log(response.data[0].myRuns);
-        self.runData = response.data[0].myRuns;
+        self.myRunsData = response.data[0].myRuns;
 
-        for (var i=0; i < self.runData.length; i++) {
-        console.log(self.runData[i]);
+        for (var i=0; i < self.myRunsData.length; i++) {
+        console.log(self.myRunsData[i]);
         };
 
-      }); // close .then
+
+        (function() {
+          $http
+          .get('http://localhost:3000/runs/' + self.myRunsData[0])
+          .then(function(response){
+            console.log("Inside getRun => data of specific Run listed below:");
+            console.log(response.data)
+            self.runData = response.data;
+          }); // close .then of nested $http  ;
+         })();
+
+
+      }); // close .then of outter $http
 
   } // close functin getRun()
 
