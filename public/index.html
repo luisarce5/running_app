@@ -126,7 +126,7 @@
 
           <section ng-controller="RunsController as runs" ng-show="addRunForm">
 
-           <form class="add-Run" >
+           <form class="add-Run" ng-submit='runs.addRun()'>
               <h4> Log Run Workout </h4>
 
               <div>

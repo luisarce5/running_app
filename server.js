@@ -8,7 +8,7 @@ let bodyParser = require('body-parser');
 
 // require our routes
 let userRoutes = require('./controllers/users_controller');
-// let runRoutes = require('./controllers/runs_controller');
+let runRoutes = require('./controllers/runs_controller');
 
 let app = express();
 
@@ -33,7 +33,7 @@ db.once('open', (callback) => {
 // all routes starting with /users will be in the userRoutes
 app.use('/users', userRoutes);
 // all route starting with /runs will be in the runRoutes
-// app.use('/runs', runRoutes);
+app.use('/runs', runRoutes);
 
 // const routes = require('./config/routes');
 

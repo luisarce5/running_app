@@ -1,18 +1,26 @@
 'use strict';
 let mongoose = require('mongoose');
-let express = require('express');
-let router = express.Router();
-let request = require('request');
 //require models
 let Run = require('../models/run.js');
 let User = require('../models/user.js');
+
+
+let express = require('express');
+let router = express.Router();
+let request = require('request');
 
 // Run - INDEX
 router.route('/')
   .get((req, res, next) => {
     console.log('hit / route in /runs => /runs/');
-    res.send('hit / route in /runs => /runs/');
-  }); // ends get
+    Run.find([], (err, myruns) => {
+      console.log(myruns);
+      if(err) throw err;
+      res.send(myruns);
+      console.log('this is all the contents in the runs database');
+    }); // ends Run.find
+}); // ends .get
+
 
 // WORK IN PROGRESS
 // Add route to ADD NEW RUN
