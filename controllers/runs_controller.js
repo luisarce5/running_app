@@ -10,6 +10,7 @@ let router = express.Router();
 let request = require('request');
 
 // Run - INDEX
+// ******* Gets all of the information for each of all Runs in the database ******
 router.route('/')
   .get((req, res, next) => {
     console.log('hit / route in /runs => /runs/');
@@ -20,6 +21,28 @@ router.route('/')
       console.log('this is all the contents in the runs database');
     }); // ends Run.find
 }); // ends .get
+
+// ******* Builds Route /runs/:id  =>  GET methods for a given Run by Run ID *******
+router.route('/:id')
+  // GET information of specific Run by Run ID
+  .get((req, res, next) => {
+    console.log('hit/runs/:id GET route');
+    console.log(req.params);
+    console.log("The req.params.id is next line: ");
+    console.log(req.params.id);
+    Run.find({_id: req.params.id}, (err, run) => {
+      if (err) return next(err);
+      res.send(run);
+      console.log("Below the user data in GET by :id request: ")
+      console.log(run);
+      console.log(run[0].route);
+    }); // ends User.find
+  }) // ends .get for /:id
+
+
+
+
+
 
 // END OF WORK IN PROGRESS
 

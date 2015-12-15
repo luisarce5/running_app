@@ -99,8 +99,13 @@ function UsersController($http){
         console.log("Inside getRun() => myRuns data listed below:");
         console.log(response.data[0].myRuns);
         self.runData = response.data[0].myRuns;
+
+        for (var i=0; i < self.runData.length; i++) {
+        console.log(self.runData[i]);
+        };
+
       }); // close .then
-      
+
   } // close functin getRun()
 
 
