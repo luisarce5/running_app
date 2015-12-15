@@ -113,8 +113,14 @@ function UsersController($http){
             console.log("Inside getRun => data of specific Run listed below:");
             console.log("response.data[0] listed below");
             console.log(response.data[0]);
-            self.runData = response.data[0];
+            self.runData.push(response.data[0]);
+            console.log("Next line => data of self.runData array:");
+            console.log(self.runData);
           }); // close .then of nested $http  ;
+
+
+
+
         }; // close runLoop
 
         for (var i=0; i < self.myRunsData.length; i++) {
@@ -122,9 +128,12 @@ function UsersController($http){
           runLoop(x);
         };
 
+
+
       }); // close .then of outter $http
 
-  } // close functin getRun()
+  } // close function getRun()
+
 
 
 } // close function UsersController($http)
