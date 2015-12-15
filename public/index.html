@@ -78,6 +78,8 @@
             <button type="button" ng-click="editProfile=true" > Edit my Profile </button>
         </div> <!-- close div class="user-profile"-->
 
+
+
         <form class="login-User text-center" ng-submit="users.authenticateUser()" ng-show="Login" >
             <h4> Log In Existing User</h4>
             <div>
@@ -118,7 +120,7 @@
             </div>
 
             <div>
-              <input type="submit" value="Create New User" class="md-button md-raised" g-click="SignUp=false">
+              <input type="submit" value="Create New User" class="md-button md-raised" ng-click="SignUp=false">
             </div>
         </form>
 
@@ -126,11 +128,26 @@
           <p> You have succesfully created a new account.  You can now log in.</p>
         </div>
 
-          <section ng-controller="RunsController as runs" ng-show="addRunForm">
 
-           <form class="add-Run" ng-submit='runs.addRun()'>
+          <!-- ******* SECTION FOR RUNS MODEL nested inside section for Users Model ******* -->
+          <section ng-controller="RunsController as runs">
+
+            <!-- ******* VIEW RUNS FOR a USER ******* -->
+            <div class-"runs-list" ng-show="viewRuns" ng-model='runs.runData'>
+                 <h5> <strong> My Runs </strong> </h5>
+                <table>
+                  <tr><th> Field        </th><th> Details </th></tr>
+                  <tr><td> Date:        </td><td> {{runs.runData[0].myRuns.date}} </td></tr>
+                  <tr><td> Distance:    </td><td> {{runs.runData[0].myRuns.distance}} </td></tr>
+                  <tr><td> Start Time:  </td><td> {{runs.runData[0].myRuns.start_time}} </td></tr>
+                  <tr><td> Duration:    </td><td> {{runs.runData[0].myRuns.duration}} </td></tr>
+                  <tr><td> Route:       </td><td> {{runs.runData[0].myRuns.route}} </td></tr>
+                  <tr><td> Run Type:    </td><td> {{runs.runData[0].myRuns.run_type}} </td></tr>
+                </table>
+            </div>
+
+           <form class="add-Run" ng-submit='runs.addRun()' ng-show="addRunForm">
               <h4> Log Run Workout </h4>
-
               <div>
                 <label for="new-run-date"> Date: </label>
                 <input type="text" id="new-run-date" placeholder="MM/DD/YY e.g. 12/17/15" ng-model='runs.newRun.date'>

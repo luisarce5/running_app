@@ -44,7 +44,7 @@ router.route('/authenticate')
 }); // ends .post
 
 
-// Gets & displays all of the information of all Users in the database
+// ******* Gets all of the information for each of all Users in the database ******
 router.route('/')
   .get((req, res, next) => {
     console.log ('Hit / route in /users => /users/');
@@ -56,7 +56,7 @@ router.route('/')
     });
   }); // ends .get
 
-  // Lines below attempting to refactor code => pending for last
+  // Lines below attempting to refactor code => PENDING
   // .get(usersController_getAll);
   //
   // function usersController_getAll(req, res, next) {
@@ -70,14 +70,13 @@ router.route('/')
   // };
 
 
-// Gets & displays the information of a User given an ID in the database
+// ******* Builds Route /users/:id  =>  GET & POST methods for a given User by User ID *******
 router.route('/:id')
-  // GET a specific User
+  // GET information of specific User by ID
   // .get(usersController.getUser)
   .get((req, res, next) => {
     console.log('hit/users/:id GET route');
-    // console.log("req.headers.host: " + req.headers.host);
-    // console.log(req.headers);
+    console.log(req.params);
     console.log("The req.params.id is next line: ");
     console.log(req.params.id);
     User.find({_id: req.params.id}, (err, user) => {
@@ -89,7 +88,7 @@ router.route('/:id')
     }); // ends User.find
   }) // ends .get for /:id
 
-  // PUT (Edit) a specific User
+  // PUT (Edit) information of a specific User by User ID
   // .put(usersController.updateUser)
   .put((req, res) => {
     console.log('hit /users/:id POST route');
@@ -105,8 +104,9 @@ router.route('/:id')
     // console.log(userData);
   });
 
+  // ******* Builds Route /signup => Create a New User *******
   router.route('/signup')
-    // POST (Create) a new User
+    // POST (Create) a New User
     //.post(usersController.createUser)
     .post ((req, res) => {
       console.log('hit users/signup with POST request.');
@@ -115,9 +115,9 @@ router.route('/:id')
       newUser.save();
     }); // ends .post for /signup
 
-  // WORK IN PROGRESS
-  // Add route to ADD NEW RUN
+  // ***** Build routes /users/:id/runs => POST & GET methods for the Runs of a given User by User ID *****
   router.route('/:id/runs')
+    // ADD a NEW RUN to a specific User
     .post((req, res) => {
       User.findById(req.params.id).exec(function(err, user) {
         let run = new Run(req.body);
@@ -136,8 +136,21 @@ router.route('/:id')
           } // close 1st else
         }); // close run.save
       }); // close User.findByID
-    }); // ends .post
+    }) // ends .post
 
+    .get((req, res, next) => {
+      console.log('hit/users/:id/runs GET route');
+      console.log("The req.params.id is next line: ");
+      console.log(req.params.id);
+      User.find( {_id: req.params.id}, (err, user) => {
+        if (err) return next(err);
+        res.send(user);
+        console.log("Below the user data in GET by users/:id/runs request: ")
+        console.log(user);
+        console.log(user[0].myRuns);
+      }); // ends User.find
+    }); // ends .get for /:id
+// ***** Build route to VIEW ALL RUNS of a specific User by User ID *****
 
 
 

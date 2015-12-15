@@ -21,30 +21,6 @@ router.route('/')
     }); // ends Run.find
 }); // ends .get
 
-
-// WORK IN PROGRESS
-// Add route to ADD NEW RUN
-router.route('/:id/runs')
-  .post((req, res) => {
-    User.findByID(req.params.id).exec(function(err, user) {
-      let run = new Run(req.body);
-      run.save(function(err){
-        if (err) {
-          console.log(err)
-        } else {
-          user.myRuns.push(run._id);
-          user.save(function(err) {
-            if (err) {
-              console.log(err)
-            } else {
-              res.send(user);
-            } // close 2nd else
-          }) // close user.save
-        } // close 1st else
-      }); // close run.save
-    }); // close User.findByID
-  }); // ends .post
-
 // END OF WORK IN PROGRESS
 
 // ONLY FOR EXAMPLE BELOW
