@@ -115,4 +115,31 @@ router.route('/:id')
       newUser.save();
     }); // ends .post for /signup
 
+  // WORK IN PROGRESS
+  // Add route to ADD NEW RUN
+  router.route('/:id/runs')
+    .post((req, res) => {
+      User.findById(req.params.id).exec(function(err, user) {
+        let run = new Run(req.body);
+        run.save(function(err){
+          if (err) {
+            console.log(err)
+          } else {
+            user.myRuns.push(run._id);
+            user.save(function(err) {
+              if (err) {
+                console.log(err)
+              } else {
+                res.send(user);
+              } // close 2nd else
+            }) // close user.save
+          } // close 1st else
+        }); // close run.save
+      }); // close User.findByID
+    }); // ends .post
+
+
+
+
+
 module.exports = router;
