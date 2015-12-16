@@ -29,11 +29,11 @@
             <a href='/' class='navbar-brand'> Log my Run App </a>
 
             <ul class='nav navbar-nav navbar-right' ng-model="users.loginUser.username">
-                <li><a href="#" id="current-user" > Welcome: {{users.loginUser.username}} </a> <li>
-                <li><a href="#" id="login-link"  ng-click="Login=true; viewAllUsers=false"> Log In </a> </li>
-                <li><a href="#" id="signup-link" ng-click="SignUp=true" > Sign Up </a> </li>
-                <li><a href="#" id="my-profile"  ng-show="false" > View My Profile </a> </li>
-                <li><a href="#" id="logout-link" ng-show="false" > Logout </a> </li>
+                <li><a id="current-user" > Welcome: {{users.loginUser.username}} </a> <li>
+                <li><a href="#" id="login-link"  ng-hide="users.loggedStatus" ng-click="Login=true; viewAllUsers=false"> Log In </a> </li>
+                <li><a href="#" id="signup-link" ng-hide="users.loggedStatus" ng-click="SignUp=true" > Sign Up </a> </li>
+                <li><a href="#" id="my-profile"  ng-if="users.loggedStatus" > View My Profile </a> </li>
+                <li><a href="#" id="logout-link" ng-if="users.loggedStatus" > Logout </a> </li>
             </ul>
 
         </div> <!-- close div class ='container navbar navbar...' -->
@@ -163,9 +163,9 @@
             </div>
         </form>
 
-        <div class="succesful-signup" ng-show="succesSignUp">
+        <!-- <div class="succesful-signup" ng-show="succesSignUp">
           <p> You have succesfully created a new account.  You can now log in.</p>
-        </div>
+        </div> -->
 
 
         <form class="edit-User" ng-submit='users.editUser()' ng-show="editProfile">

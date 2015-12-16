@@ -14,6 +14,7 @@ function UsersController($http){
   self.addUser = addUser; // function () defined below
   self.newUser = {}; // newUser{} gets its data from add-user Form @ index.html and passes it to addUser()
   self.authenticateUser = authenticateUser; // function () defined below
+  self.loggedStatus = false;
   self.loginUser = {}; // loginUser{} gets its data from login-User Form @ index.html and passes it to authenticateUser()
 
   self.currentUserID = [];
@@ -69,6 +70,8 @@ function UsersController($http){
       console.log("This is myUserID: " + ($.data(document, "myUserID")) );
       getUser();
       console.log('just ran getUser() from inside authenticateUser()');
+      self.loggedStatus = true;
+      console.log(self.loggedStatus);
     });
   }
 
