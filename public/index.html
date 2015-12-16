@@ -82,11 +82,10 @@
               <tr><td> Email:                </td><td> {{users.userData[0].email}} </td></tr>
               <tr><td> Description:          </td><td> {{users.userData[0].user_description}} </td></tr>
               <tr><td> City:                 </td><td> {{users.userData[0].city}} </td></tr>
-              <tr><td> Number My Runs logged:</td><td> {{users.userData[0].myRuns.length}}</td></tr>
+              <tr><td> Number of My Runs logged:</td><td> {{users.userData[0].myRuns.length}}</td></tr>
             </table>
 
             <button type="button" ng-click="editProfile=true" class="pull-left edit-profile-button" > Edit my Profile </button>
-
           </section>
 
             <section class="pull-right col-md-4" style="text-align: center">
@@ -110,6 +109,7 @@
                  <th> Duration (min)</th>
                  <th> Route         </th>
                  <th> Run Type      </th>
+                 <th> ID            </th>
                </tr>
 
                <tr ng-repeat="run in users.runData">
@@ -121,6 +121,7 @@
                  <td> {{run.duration}}   </td>
                  <td> {{run.route}}      </td>
                  <td> {{run.run_type}}   </td>
+                 <td> {{run._id}}        </td>
                </section>
                </tr>
              </table>
@@ -172,46 +173,65 @@
             </div>
         </form>
 
-        <!-- <div class="succesful-signup" ng-show="succesSignUp">
-          <p> You have succesfully created a new account.  You can now log in.</p>
-        </div> -->
 
+        <!-- <div class="user-profile row well well-lg row-margin" ng-show="viewProfile" ng-model='users.userData'>
+            <section class="pull-left col-md-8">
+            <h5> <strong> My Profile </strong> </h5>
+            <table class="table-user-profile"> -->
 
-        <form class="edit-User" ng-submit='users.editUser()' ng-show="editProfile">
-              <h4> Edit User Profile </h4>
-            <div>
-              <label for="edit-user-username"> User Name: </label>
-              <input type="text" id="edit-user-username" placeholder="Username" ng-model='users.editUserData.username'>
-            </div>
+        <form class="edit-User row well well-lg row-margin" ng-submit='users.editUser()' ng-show="editProfile">
 
-            <div>
-              <label for="edit-user-email"> Email: </label>
-              <input type="text" id="edit-user-email" placeholder="email@example.com" ng-model='users.editUserData.email'>
-            </div>
+          <section class="pull-left col-md-8">
+            <h5> <strong> Edit User Profile </strong> </h5>
+            <table class="table-edit-user-profile">
+              <tr><th>
+                Field
+              </th><th>
+                Details
+              </th></tr>
 
-            <div>
-              <label for="edit-user-password"> Password: </label>
-              <input type="text" id="edit-user-password" placeholder="password" ng-model='users.editUserData.password'>
-            </div>
+              <tr><td>
+                <label for="edit-user-username"> User Name: </label>
+              </td><td>
+                <input type="text" id="edit-user-username" placeholder="Username" ng-model='users.editUserData.username'>
+              </td></tr>
 
-            <div>
-              <label for="edit-user-city"> City: </label>
-              <input type="text" id="edit-user-city" placeholder="City" ng-model='users.editUserData.city'>
-            </div>
+              <tr><td>
+                <label for="edit-user-email"> Email: </label>
+              </td><td>
+                <input type="text" id="edit-user-email" placeholder="email@example.com" ng-model='users.editUserData.email'>
+              </td></tr>
 
-            <div>
-              <label for="edit-user-description"> User Description: </label>
-              <input type="text" id="edit-user-description" placeholder="100 char User Description" ng-model='users.editUserData.user_description'>
-            </div>
+              <tr><td>
+                <label for="edit-user-password"> Password: </label>
+              </td><td>
+                <input type="text" id="edit-user-password" placeholder="password" ng-model='users.editUserData.password'>
+              </td></tr>
 
-            <div>
-              <label for="edit-user-photo"> Photo Link: </label>
+              <tr><td>
+                <label for="edit-user-city"> City: </label>
+              </td><td>
+                <input type="text" id="edit-user-city" placeholder="City" ng-model='users.editUserData.city'>
+              </td></tr>
+
+              <tr><td>
+                <label for="edit-user-description"> User Description: </label>
+              </td><td>
+                <input type="text" id="edit-user-description" placeholder="100 char User Description" ng-model='users.editUserData.user_description'>
+              </td></tr>
+
+              <tr><td>
+                <label for="edit-user-photo"> Photo Link: </label>
+              </td><td>
               <input type="text" id="edit-user-photo" placeholder="photo link" ng-model='users.editUserData.profile_photo'>
-            </div>
+              </td></tr>
+            </table>
 
             <div>
               <input type="submit" value="Edit User" class="md-button md-raised" ng-click="editProfile=false">
             </div>
+
+            </section>
         </form>
 
 
