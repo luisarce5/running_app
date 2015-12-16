@@ -52,6 +52,7 @@ function UsersController($http){
         getAllUsers(); // do I need this line?
         // self.newUserCreated = true;
     });
+  alert("You have succesfully created a new account");
   }
 
   // ***** Authenticate a User as User logs in *****
@@ -138,7 +139,7 @@ function UsersController($http){
 RunsController.$inject = ['$http'];
 
 // getRun();
-console.log('Just ran getRun() inside RunsController');
+// console.log('Just ran getRun() inside RunsController');
 
 function RunsController($http){
   let self = this;
@@ -178,8 +179,6 @@ function RunsController($http){
   // } // close functin getRun()
 
 } // close function RunsController($http)
-
-
 
 
 //  ######## AJAX ###########

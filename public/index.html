@@ -159,11 +159,11 @@
             </div>
 
             <div>
-              <input type="submit" value="Create New User" class="md-button md-raised" ng-click="SignUp=false">
+              <input type="submit" value="Create New User" class="md-button md-raised" ng-click="SignUp=false; successSignUp=true">
             </div>
         </form>
 
-        <div class="succesful-signup" >
+        <div class="succesful-signup" ng-show="succesSignUp">
           <p> You have succesfully created a new account.  You can now log in.</p>
         </div>
 
