@@ -79,16 +79,16 @@
         </div> <!-- close div class="user-profile"-->
 
         <!-- ******* VIEW RUNS FOR a USER ******* -->
-        <div class-"runs-list" ng-show="viewRuns" ng-model='users.runData'>
+        <div class-"runs-list" ng-show="viewRuns">
              <h5> <strong> My Runs </strong> </h5>
-            <table>
+            <table ng-repeat="run in users.runData">
               <tr><th> Field        </th><th> Details </th></tr>
-              <tr><td> Date:        </td><td> {{users.runData[0].date}} </td></tr>
-              <tr><td> Distance:    </td><td> {{users.runData[0].distance}} </td></tr>
-              <tr><td> Start Time:  </td><td> {{users.runData[0].start_time}} </td></tr>
-              <tr><td> Duration:    </td><td> {{users.runData[0].duration}} </td></tr>
-              <tr><td> Route:       </td><td> {{users.runData[0].route}} </td></tr>
-              <tr><td> Run Type:    </td><td> {{users.runData[0].run_type}} </td></tr>
+              <tr><td> Date:        </td><td> {{run.date}} </td></tr>
+              <tr><td> Distance:    </td><td> {{run.distance}} </td></tr>
+              <tr><td> Start Time:  </td><td> {{run.start_time}} </td></tr>
+              <tr><td> Duration:    </td><td> {{run.duration}} </td></tr>
+              <tr><td> Route:       </td><td> {{run.route}} </td></tr>
+              <tr><td> Run Type:    </td><td> {{run.run_type}} </td></tr>
             </table>
         </div>
 
