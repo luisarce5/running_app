@@ -92,6 +92,7 @@
 
              <table>
                <tr>
+                 <th> Action        </th>
                  <th> Date          </th>
                  <th> Distance      </th>
                  <th> Start Time    </th>
@@ -101,12 +102,15 @@
                </tr>
 
                <tr ng-repeat="run in users.runData">
+                 <section>
+                 <td> <button ng-click="">View</button>
                  <td> {{run.date}}       </td>
                  <td> {{run.distance}}   </td>
                  <td> {{run.start_time}} </td>
                  <td> {{run.duration}}   </td>
                  <td> {{run.route}}      </td>
                  <td> {{run.run_type}}   </td>
+               </section>
                </tr>
              </table>
 

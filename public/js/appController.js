@@ -112,22 +112,22 @@ function UsersController($http){
         console.log(self.myRunsData[i]);
         };
 
-        var runLoop = function(x) {
+        var runLoop = function(runItem) {
           $http
-          .get('http://localhost:3000/runs/' + x)
+          .get('http://localhost:3000/runs/' + runItem)
           .then(function(response){
             console.log("Inside getRun => data of specific Run listed below:");
             console.log("response.data[0] listed below");
             console.log(response.data[0]);
             self.runData.push(response.data[0]);
-            console.log("Next line => data of self.runData array:");
+            console.log("line below => data of self.runData array:");
             console.log(self.runData);
           }); // close .then of nested $http  ;
         }; // close runLoop
 
         for (var i=0; i < self.myRunsData.length; i++) {
-          var x = self.myRunsData[i];
-          runLoop(x);
+          var runItem = self.myRunsData[i];
+          runLoop(runItem);
         };
       }); // close .then of outter $http
   } // close function getRun()
