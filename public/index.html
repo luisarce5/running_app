@@ -53,27 +53,33 @@
 
         <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p>
 
-        <div class="all-Users" ng-show="viewAllUsers">
+        <div class="all-Users row well well-lg row-margin" ng-show="viewAllUsers">
             <h5> List of All Users </h5>
 
-            <ul id='users'>
-                <li ng-repeat="user in users.all" >
-                  Username: {{user.username}},
-                  City: {{user.city}}
-                </li>
-            </ul>
+            <table>
+              <tr>
+                <th> Username </th>
+                <th> City     </th>
+              </tr>
+              <tr ng-repeat="user in users.all" >
+                <td> {{user.username}} </td>
+                <td> {{user.city}} </td>
+              </tr>
+            </table>
+
+
         </div> <!-- close class="all-Users" ... -->
 
 
         <div class="user-profile row well well-lg row-margin" ng-show="viewProfile" ng-model='users.userData'>
             <h5> <strong> My Profile </strong> </h5>
             <table>
-              <tr><th> Field        </th><th> Details </th></tr>
-              <tr><td> Username:    </td><td> {{users.userData[0].username}} </td></tr>
-              <tr><td> Email:       </td><td> {{users.userData[0].email}} </td></tr>
-              <tr><td> Description: </td><td> {{users.userData[0].user_description}} </td></tr>
-              <tr><td> City:        </td><td> {{users.userData[0].city}} </td></tr>
-              <tr><td> My Runs:     </td><td> Pending </td></tr>
+              <tr><th> Field                 </th><th> Details </th></tr>
+              <tr><td> Username:             </td><td> {{users.userData[0].username}} </td></tr>
+              <tr><td> Email:                </td><td> {{users.userData[0].email}} </td></tr>
+              <tr><td> Description:          </td><td> {{users.userData[0].user_description}} </td></tr>
+              <tr><td> City:                 </td><td> {{users.userData[0].city}} </td></tr>
+              <tr><td> Number My Runs logged:</td><td> {{users.userData[0].myRuns.length}}</td></tr>
             </table>
 
             <button type="button" ng-click="editProfile=true" > Edit my Profile </button>

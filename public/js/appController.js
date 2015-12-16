@@ -92,10 +92,10 @@ function UsersController($http){
 
   // ***** Get Runs for a specic User by User Id *****
   function getRun(){
-    // let userID = ($.data(document, "myUserID"));
-    // console.log("Inside getRun() => UserID = " + userID);
+    let userID = ($.data(document, "myUserID"));
+    console.log("Inside getRun() => UserID = " + userID);
       $http
-      .get('http://localhost:3000/users/566e1e394465fc3d65210b1b/runs') // ?????
+      .get('http://localhost:3000/users/' + userID) // ?????
       .then(function(response){
         console.log("Inside getRun() => list of User's myRuns listed below:");
         console.log(response.data[0].myRuns);
@@ -104,7 +104,6 @@ function UsersController($http){
         for (var i=0; i < self.myRunsData.length; i++) {
         console.log(self.myRunsData[i]);
         };
-
 
         var runLoop = function(x) {
           $http
@@ -117,25 +116,14 @@ function UsersController($http){
             console.log("Next line => data of self.runData array:");
             console.log(self.runData);
           }); // close .then of nested $http  ;
-
-
-
-
         }; // close runLoop
 
         for (var i=0; i < self.myRunsData.length; i++) {
           var x = self.myRunsData[i];
           runLoop(x);
         };
-
-
-
       }); // close .then of outter $http
-
   } // close function getRun()
-
-
-
 } // close function UsersController($http)
 
 // ##### Run Controller #####
@@ -162,8 +150,10 @@ function RunsController($http){
   // console.log("just ran getRun() from inside RunsController");
 
   function addRun(){
+    let userID = ($.data(document, "myUserID"));
+    console.log("Inside getRun() => UserID = " + userID);
     $http
-      .post('http://localhost:3000/users/566e1e394465fc3d65210b1b/runs', self.newRun)
+      .post('http://localhost:3000/users/' + userID + '/runs', self.newRun)
       .then(function(response){
     });
   }

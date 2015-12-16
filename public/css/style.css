@@ -1,12 +1,17 @@
 .row-margin {
-  margin-top: 75px;
-  margin-bottom: 30px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   padding-top: 5px;
   padding-bottom: 25px;
 }
 
+.navbar-nav{
+  /*margin-top: 70px;*/
+}
+
 #actions-box {
   border: 1px solid gray;
+  margin-top: 75px;
 }
 
 .login-User {
@@ -26,7 +31,6 @@ th {
   border-top: 1px solid gray;
   padding-top: 3px;
   padding-bottom: 3px;
-  margin-bottom: 10px;
 }
 
 
@@ -40,5 +44,9 @@ td {
 }
 
 .runs-list {
+  border: 1px solid gray;
+}
+
+.all-Users {
   border: 1px solid gray;
 }
