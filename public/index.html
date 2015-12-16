@@ -179,7 +179,8 @@
             <h5> <strong> My Profile </strong> </h5>
             <table class="table-user-profile"> -->
 
-        <form class="edit-User row well well-lg row-margin" ng-submit='users.editUser()' ng-show="editProfile">
+
+        <form class="edit-User row well well-lg row-margin" ng-submit='users.editUser(); users.getUser()' ng-show="editProfile">
 
           <section class="pull-left col-md-8">
             <h5> <strong> Edit User Profile </strong> </h5>
