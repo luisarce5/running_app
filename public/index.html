@@ -83,6 +83,7 @@
             </table>
 
             <button type="button" ng-click="editProfile=true" > Edit my Profile </button>
+
         </div> <!-- close div class="user-profile"-->
 
         <!-- ******* VIEW RUNS FOR a USER ******* -->
@@ -161,6 +162,39 @@
         </div>
 
 
+        <form class="edit-User" ng-submit='users.editUser()' ng-show="editProfile">
+              <h4> Edit User Profile </h4>
+            <div>
+              <label for="edit-user-username"> User Name: </label>
+              <input type="text" id="edit-user-username" placeholder="Username" ng-model='users.editUserData.username'>
+            </div>
+
+            <div>
+              <label for="edit-user-email"> Email: </label>
+              <input type="text" id="edit-user-email" placeholder="email@example.com" ng-model='users.editUserData.email'>
+            </div>
+
+            <div>
+              <label for="edit-user-password"> Password: </label>
+              <input type="text" id="edit-user-password" placeholder="password" ng-model='users.editUserData.password'>
+            </div>
+
+            <div>
+              <label for="edit-user-city"> City: </label>
+              <input type="text" id="edit-user-city" placeholder="City" ng-model='users.editUserData.city'>
+            </div>
+
+            <div>
+              <label for="edit-user-description"> User Description: </label>
+              <input type="text" id="edit-user-description" placeholder="100 char User Description" ng-model='users.editUserData.user_description'>
+            </div>
+
+            <div>
+              <input type="submit" value="Edit User" class="md-button md-raised" ng-click="editProfile=false">
+            </div>
+        </form>
+
+
           <!-- ******* SECTION FOR RUNS MODEL nested inside section for Users Model ******* -->
           <section ng-controller="RunsController as runs">
 
@@ -217,7 +251,7 @@
 
       <div class='row'>
           <div class='col-md-4'>
-              <h3> Log Today </h3>
+              <h3> About Logging your Runs </h3>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p>
           </div>
@@ -228,7 +262,7 @@
           </div>
 
           <div class='col-md-4'>
-              <h3> Running Races </h3>
+              <h3> Explore Races </h3>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
 

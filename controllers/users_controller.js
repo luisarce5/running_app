@@ -14,7 +14,6 @@ let router = express.Router();
 var userToken;
 
 // POST (Authenticate) a User before logging in
-// .post(usersController.authenticate)
 router.route('/authenticate')
   .post((req, res) => {
     console.log('hit/users/authenticate');
@@ -42,7 +41,6 @@ router.route('/authenticate')
     }  // end first else
   }); // ends User.findOne
 }); // ends .post
-
 
 // ******* Gets all of the information for each of all Users in the database ******
 router.route('/')
@@ -100,8 +98,6 @@ router.route('/:id')
     }, function (err, user) {
       res.send(user);
     });
-    // var userData = req.body.data;
-    // console.log(userData);
   });
 
   // ******* Builds Route /signup => Create a New User *******
@@ -138,6 +134,7 @@ router.route('/:id')
       }); // close User.findByID
     }) // ends .post
 
+    // GET the profile of a User by User ID; this includes myRuns data
     .get((req, res, next) => {
       console.log('hit/users/:id/runs GET route');
       console.log("The req.params.id is next line: ");
@@ -151,6 +148,13 @@ router.route('/:id')
         return;
       }); // ends User.find
     }); // ends .get for /:id
+
+
+
+
+
+
+
 // ***** Build route to VIEW ALL RUNS of a specific User by User ID *****
 
 

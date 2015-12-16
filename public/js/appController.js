@@ -3,20 +3,12 @@
 angular.module('TheRunningApp', [])
   .controller('UsersController', UsersController)
   .controller('RunsController', RunsController)
-  .controller('ScopeController', function($scope){ // last addition - WORK IN PROGRESS
-    $scope.getRun = getRun; // last addition - WORK IN PROGRESS
-  })
 
 UsersController.$inject = ['$http'];
 
-// function UsersController($scope) { // Just added
-//   $scope.myProfile = true;
-//   $scope.logout = true;
-// }
-
 function UsersController($http){
   let self = this;
-  // Our CRUD functions
+  // CRUD functions
   self.all = [];
   self.getAllUsers = getAllUsers; // function () defined below
   self.addUser = addUser; // function () defined below
@@ -28,8 +20,11 @@ function UsersController($http){
   console.log('from Line 20 self.currentUserID: ' + self.currentUserID);
   self.userData = []; // userData[] gets its data from getUser()
   self.getUser = getUser; // function () defined below
+
+  self.editUser = editUser; //  WORK IN PROGRESS
+  self.editUserData = {}; //editUserData{} gets it data from edit-user Form @ index.html and passes it to editUser()
+
   // self.newUserCreated = [];
-  // self.editUser = editUser;
 
   self.runData = []; // runData[] gets its data from getRun()
   self.myRunsData = []; // runData[] gets its data from getRun()
@@ -89,6 +84,18 @@ function UsersController($http){
     }); // close .then
     return;
   } // close function getUser()
+
+  //***** Edit User  *****  LATEST ADDITION --- WORK IN PROGRESS
+  function editUser(){
+    let userID = ($.data(document, "myUserID"));
+    console.log("The userID = " + userID);
+    $http
+    .put('http://localhost:3000/users/'+ userID, self.editUserData)
+    .then(function(response){
+      console.log("Running inside editUser() PUT method");
+    }); // close .then
+  } // close function editUser()
+
 
   // ***** Get Runs for a specic User by User Id *****
   function getRun(){
