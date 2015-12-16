@@ -51,7 +51,7 @@
 
         </div> <!-- close div class='row well ...'-->
 
-        <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p>
+        <!-- <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p> -->
 
         <div class="all-Users row well well-lg row-margin" ng-show="viewAllUsers">
             <h5> <strong> List of All Users </strong> </h5>
@@ -74,6 +74,7 @@
 
 
         <div class="user-profile row well well-lg row-margin" ng-show="viewProfile" ng-model='users.userData'>
+            <section class="pull-left col-md-8">
             <h5> <strong> My Profile </strong> </h5>
             <table>
               <tr><th> Field                 </th><th> Details </th></tr>
@@ -84,7 +85,15 @@
               <tr><td> Number My Runs logged:</td><td> {{users.userData[0].myRuns.length}}</td></tr>
             </table>
 
-            <button type="button" ng-click="editProfile=true" > Edit my Profile </button>
+            <button type="button" ng-click="editProfile=true" class="pull-left" > Edit my Profile </button>
+
+          </section>
+
+            <section class="pull-right col-md-4" style="text-align: center">
+              <div class="profile-photo-box">
+                <img src="{{users.userData[0].profile_photo}}" title="Profile Photo" class="profile-photo"/></a>
+              </div>
+            </section>
 
         </div> <!-- close div class="user-profile"-->
 
@@ -196,6 +205,11 @@
             </div>
 
             <div>
+              <label for="edit-user-photo"> Photo Link: </label>
+              <input type="text" id="edit-user-photo" placeholder="photo link" ng-model='users.editUserData.profile_photo'>
+            </div>
+
+            <div>
               <input type="submit" value="Edit User" class="md-button md-raised" ng-click="editProfile=false">
             </div>
         </form>
@@ -259,11 +273,11 @@
           <div class='col-md-4'>
               <h3> About Logging your Runs </h3>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p>
+              <!-- <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p> -->
           </div>
 
           <div class='col-md-4'>
-              <h3> Go Anywhere </h3>
+              <h3> Track Performance </h3>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
 

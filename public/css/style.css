@@ -22,7 +22,7 @@
 }
 
 table {
-  width: 100%;
+  width: 80%;
   /*border: 1px solid gray;*/
 }
 
@@ -49,4 +49,17 @@ td {
 
 .all-Users {
   border: 1px solid gray;
+}
+
+.profile-photo {
+  max-width:95%;
+  max-height:95%;
+}
+
+.profile-photo-box {
+  width: 150px;
+  height: 200px;
+  border: 2px solid gray;
+  padding-top: 5px;
+  margin-top: 40px;
 }
