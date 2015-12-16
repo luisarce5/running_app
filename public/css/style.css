@@ -9,11 +9,36 @@
   border: 1px solid gray;
 }
 
-.login-User{
+.login-User {
   border: 1px solid gray;
   padding: 15px;
   width: 40%;
   margin: 10px auto;
 }
-/*.navbar-fixed-top {
-}*/
+
+table {
+  width: 100%;
+  /*border: 1px solid gray;*/
+}
+
+th {
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+
+td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.user-profile {
+  border: 1px solid gray;
+}
+
+.runs-list {
+  border: 1px solid gray;
+}

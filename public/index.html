@@ -64,7 +64,8 @@
             </ul>
         </div> <!-- close class="all-Users" ... -->
 
-        <div class="user-profile" ng-show="viewProfile" ng-model='users.userData'>
+
+        <div class="user-profile row well well-lg row-margin" ng-show="viewProfile" ng-model='users.userData'>
             <h5> <strong> My Profile </strong> </h5>
             <table>
               <tr><th> Field        </th><th> Details </th></tr>
@@ -79,17 +80,30 @@
         </div> <!-- close div class="user-profile"-->
 
         <!-- ******* VIEW RUNS FOR a USER ******* -->
-        <div class-"runs-list" ng-show="viewRuns">
+        <div class="runs-list row well well-lg row-margin" ng-show="viewRuns">
              <h5> <strong> My Runs </strong> </h5>
-            <table ng-repeat="run in users.runData">
-              <tr><th> Field        </th><th> Details </th></tr>
-              <tr><td> Date:        </td><td> {{run.date}} </td></tr>
-              <tr><td> Distance:    </td><td> {{run.distance}} </td></tr>
-              <tr><td> Start Time:  </td><td> {{run.start_time}} </td></tr>
-              <tr><td> Duration:    </td><td> {{run.duration}} </td></tr>
-              <tr><td> Route:       </td><td> {{run.route}} </td></tr>
-              <tr><td> Run Type:    </td><td> {{run.run_type}} </td></tr>
-            </table>
+
+             <table>
+               <tr>
+                 <th> Date          </th>
+                 <th> Distance      </th>
+                 <th> Start Time    </th>
+                 <th> Duration (min)</th>
+                 <th> Route         </th>
+                 <th> Run Type      </th>
+               </tr>
+
+               <tr ng-repeat="run in users.runData">
+                 <td> {{run.date}}       </td>
+                 <td> {{run.distance}}   </td>
+                 <td> {{run.start_time}} </td>
+                 <td> {{run.duration}}   </td>
+                 <td> {{run.route}}      </td>
+                 <td> {{run.run_type}}   </td>
+               </tr>
+             </table>
+
+
         </div>
 
         <form class="login-User text-center" ng-submit="users.authenticateUser()" ng-show="Login" >
