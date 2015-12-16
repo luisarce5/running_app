@@ -76,7 +76,7 @@
         <div class="user-profile row well well-lg row-margin" ng-show="viewProfile" ng-model='users.userData'>
             <section class="pull-left col-md-8">
             <h5> <strong> My Profile </strong> </h5>
-            <table>
+            <table class="table-user-profile">
               <tr><th> Field                 </th><th> Details </th></tr>
               <tr><td> Username:             </td><td> {{users.userData[0].username}} </td></tr>
               <tr><td> Email:                </td><td> {{users.userData[0].email}} </td></tr>
@@ -85,7 +85,7 @@
               <tr><td> Number My Runs logged:</td><td> {{users.userData[0].myRuns.length}}</td></tr>
             </table>
 
-            <button type="button" ng-click="editProfile=true" class="pull-left" > Edit my Profile </button>
+            <button type="button" ng-click="editProfile=true" class="pull-left edit-profile-button" > Edit my Profile </button>
 
           </section>
 

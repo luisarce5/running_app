@@ -22,8 +22,15 @@
 }
 
 table {
+  width: 100%;
+}
+
+.table-user-profile {
   width: 80%;
-  /*border: 1px solid gray;*/
+}
+
+.edit-profile-button {
+  margin-top: 25px;
 }
 
 th {
