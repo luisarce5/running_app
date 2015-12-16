@@ -42,9 +42,9 @@
             <div class="col-md-12">
                 <h3> The Easiest Way to Track your Running Workouts </h3>
                 <p class="lead"> Keep a running journal, track your progress, plan your running routes. </p>
-                <button type="button" ng-click="addRunForm=true"> Log Run Workout </button>
-                <button type="button" ng-click="viewProfile=true" > View my Profile </button>
-                <button type="button" ng-click="viewRuns=true; users.getRun()" > View my Runs </button>
+                <button type="button" ng-show="users.loggedStatus" ng-click="addRunForm=true"> Log Run Workout </button>
+                <button type="button" ng-show="users.loggedStatus" ng-click="viewProfile=true" > View my Profile </button>
+                <button type="button" ng-show="users.loggedStatus" ng-click="viewRuns=true; users.getRun()" > View my Runs </button>
                 <button type="button" ng-click="viewAllUsers=true" class=pull-right> View List of Public Users </button>
 
             </div> <!-- close div class="col-md-12" -->
