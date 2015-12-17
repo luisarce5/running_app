@@ -44,7 +44,7 @@
                 <p class="lead"> Keep a running journal, track your progress, plan your running routes. </p>
                 <button type="button" ng-show="users.loggedStatus" ng-click="addRunForm=true"> Log Run Workout </button>
                 <button type="button" ng-show="users.loggedStatus" ng-click="viewProfile=true" > View my Profile </button>
-                <button type="button" ng-show="users.loggedStatus" ng-click="viewRuns=true; users.getRun()" > View my Runs </button>
+                <button type="button" ng-show="users.loggedStatus" ng-click="viewRuns=true; users.getRuns()" > View my Runs </button>
                 <button type="button" ng-click="viewAllUsers=true" class=pull-right> View List of Public Users </button>
 
             </div> <!-- close div class="col-md-12" -->
@@ -99,7 +99,7 @@
         <!-- ******* VIEW RUNS FOR a USER ******* -->
         <div class="runs-list row well well-lg row-margin" ng-show="viewRuns">
              <h5> <strong> My Runs </strong> </h5>
-<td>         <button type="button" id="{{run._id}}" ng-click="viewRunProfile=true">View</button>
+
              <table>
                <tr>
                  <th> Action        </th>
@@ -112,7 +112,6 @@
                </tr>
 
                <tr ng-repeat="run in users.runData">
-
                    <td> <button type="button" id="{{run._id}}" ng:click="$parent.viewRunProfile=true">View</button>
                    <td> {{run.date}}       </td>
                    <td> {{run.distance}}   </td>
@@ -134,18 +133,20 @@
             <h5> <strong> Run Details </strong> </h5>
             <table class="table-run-details">
               <tr><th> Field       </th><th> Details </th></tr>
-              <tr><td> Date:       </td><td> {{users.userData[0].username}} </td></tr>
-              <tr><td> Distance:   </td><td> {{users.userData[0].email}} </td></tr>
-              <tr><td> Start Time: </td><td> {{users.userData[0].user_description}} </td></tr>
-              <tr><td> Duration:   </td><td> {{users.userData[0].city}} </td></tr>
-              <tr><td> Route:      </td><td> {{users.userData[0].myRuns.length}}</td></tr>
-              <tr><td> Run Type:   </td><td> {{users.userData[0].city}} </td></tr>
-              <tr><td> Run Type:   </td><td> {{users.userData[0].city}} </td></tr>
-              <tr><td> Comments:   </td><td> {{users.userData[0].city}} </td></tr>
-              <tr><td> Shoes:      </td><td> {{users.userData[0].city}} </td></tr>
+              <tr><td> Date:       </td><td> {{users.userData[0].date}} </td></tr>
+              <tr><td> Distance:   </td><td> {{users.userData[0].distance}} </td></tr>
+              <tr><td> Start Time: </td><td> {{users.userData[0].start_time}} </td></tr>
+              <tr><td> Duration:   </td><td> {{users.userData[0].duration}} </td></tr>
+              <tr><td> Route:      </td><td> {{users.userData[0].route}}</td></tr>
+              <tr><td> Run Type:   </td><td> {{users.userData[0].run_type}} </td></tr>
+              <tr><td> Comments:   </td><td> {{users.userData[0].comments}} </td></tr>
+              <tr><td> Shoes:      </td><td> {{users.userData[0].shoes}} </td></tr>
             </table>
 
-            <button type="button" ng-click="editRun=true" class="pull-left edit-run-button" > Edit Run Workout </button>
+            <span>
+              <button type="button" ng-click="editRun=true" class="edit-run-button" > Edit Run Workout </button>
+              <button type="button" ng-click="deleteRun=true" class="delete-run-button" > Delete Run Workout </button>
+            </span>
 
           </section>
 

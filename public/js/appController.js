@@ -27,9 +27,9 @@ function UsersController($http){
 
   // self.newUserCreated = [];
 
-  self.runData = []; // runData[] gets its data from getRun()
-  self.myRunsData = []; // runData[] gets its data from getRun()
-  self.getRun = getRun; // function () defined below
+  self.runData = []; // runData[] gets its data from getRuns()
+  self.myRunsData = []; // runData[] gets its data from getRuns()
+  self.getRuns = getRuns; // function () defined below
 
   getAllUsers();
   console.log("just invoked getAllUsers()");
@@ -102,13 +102,13 @@ function UsersController($http){
 
 
   // ***** Get Runs for a specic User by User Id *****
-  function getRun(){
+  function getRuns(){
     let userID = ($.data(document, "myUserID"));
-    console.log("Inside getRun() => UserID = " + userID);
+    console.log("Inside getRuns() => UserID = " + userID);
       $http
       .get('http://localhost:3000/users/' + userID) // ?????
       .then(function(response){
-        console.log("Inside getRun() => list of User's myRuns listed below:");
+        console.log("Inside getRuns() => list of User's myRuns listed below:");
         console.log(response.data[0].myRuns);
         self.myRunsData = response.data[0].myRuns;
 
@@ -120,7 +120,7 @@ function UsersController($http){
           $http
           .get('http://localhost:3000/runs/' + runItem)
           .then(function(response){
-            console.log("Inside getRun => data of specific Run listed below:");
+            console.log("Inside getRuns => data of specific Run listed below:");
             console.log("response.data[0] listed below");
             console.log(response.data[0]);
             self.runData.push(response.data[0]);
@@ -134,15 +134,15 @@ function UsersController($http){
           runLoop(runItem);
         };
       }); // close .then of outter $http
-  } // close function getRun()
+  } // close function getRuns()
 } // close function UsersController($http)
 
 // ##### Run Controller #####
 
 RunsController.$inject = ['$http'];
 
-// getRun();
-// console.log('Just ran getRun() inside RunsController');
+// getRuns();
+// console.log('Just ran getRuns() inside RunsController');
 
 function RunsController($http){
   let self = this;
@@ -154,32 +154,32 @@ function RunsController($http){
   // self.editRun = editRun;
   // self.currentUserID = [];
 
-  // self.runData = []; // runData[] gets its data from getRun() DELETED IN LAST EDIT
-  // self.getRun = getRun; // function () defined below DELETED IN LAST EDIT
+  // self.runData = []; // runData[] gets its data from getRuns() DELETED IN LAST EDIT
+  // self.getRuns = getRuns; // function () defined below DELETED IN LAST EDIT
 
-  // getRun();
-  // console.log("just ran getRun() from inside RunsController");
+  // getRuns();
+  // console.log("just ran getRuns() from inside RunsController");
 
   function addRun(){
     let userID = ($.data(document, "myUserID"));
-    console.log("Inside getRun() => UserID = " + userID);
+    console.log("Inside getRuns() => UserID = " + userID);
     $http
       .post('http://localhost:3000/users/' + userID + '/runs', self.newRun)
       .then(function(response){
     });
   }
 
-  // function getRun(){
+  // function getRuns(){
   //   // let userID = ($.data(document, "myUserID"));
-  //   // console.log("Inside getRun() => UserID = " + userID);
+  //   // console.log("Inside getRuns() => UserID = " + userID);
   //     $http
   //     .get('http://localhost:3000/users/566e1e394465fc3d65210b1b/runs') // ?????
   //     .then(function(response){
-  //       console.log("Running inside getRun()");
+  //       console.log("Running inside getRuns()");
   //       console.log(response.data);
   //       self.runData = response.data;
   //     }); // close .then
-  // } // close functin getRun()
+  // } // close functin getRuns()
 
 } // close function RunsController($http)
 
