@@ -68,7 +68,11 @@ td {
   border: 1px solid gray;
 }
 
-.run-profile {
+/*.run-profile {
+  border: 1px solid gray;
+}*/
+
+.add-Run{
   border: 1px solid gray;
 }
 
@@ -81,6 +85,10 @@ td {
 }
 
 .all-Users {
+  border: 1px solid gray;
+}
+
+.add-Run {
   border: 1px solid gray;
 }
 

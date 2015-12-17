@@ -33,7 +33,7 @@
                 <li><a href="#" id="login-link"  ng-hide="users.loggedStatus" ng-click="Login=true; viewAllUsers=false"> Log In </a> </li>
                 <li><a href="#" id="signup-link" ng-hide="users.loggedStatus" ng-click="SignUp=true" > Sign Up </a> </li>
                 <li><a href="#" id="my-profile"  ng-if="users.loggedStatus" > View My Profile </a> </li>
-                <li><a href="#" id="logout-link" ng-if="users.loggedStatus" > Logout </a> </li>
+                <li><a href='#' id="logout-link" ng-if="users.loggedStatus" > Logout </a> </li>
             </ul>
 
         </div> <!-- close div class ='container navbar navbar...' -->
@@ -89,11 +89,11 @@
             <button type="button" ng-click="editProfile=true" class="pull-left edit-profile-button" > Edit my Profile </button>
           </section>
 
-          <!-- <section class="pull-right col-md-4" style="text-align: center">
+          <section class="pull-right col-md-4" style="text-align: center">
             <div class="profile-photo-box">
               <img src="{{users.userData[0].profile_photo}}" title="Profile Photo" class="profile-photo"/></a>
             </div>
-          </section> -->
+          </section>
 
         </div> <!-- close div class="user-profile"-->
 
@@ -113,7 +113,7 @@
                </tr>
 
                <tr ng-repeat="run in users.runData">
-                   <td> <button type="button" id="{{run._id}}" ng:click="$parent.viewRunProfile=true">View</button>
+                   <td> <button type="button" id="{{run._id}}" ng:click="$parent.viewRunProfile=true; $parent.runID">View</button>
                    <td> {{run.date}}       </td>
                    <td> {{run.distance}}   </td>
                    <td> {{run.start_time}} </td>
@@ -254,71 +254,86 @@
           <section ng-controller="RunsController as runs">
 
 
-           <form class="add-Run" ng-submit='runs.addRun()' ng-show="addRunForm">
-              <h4> Log Run Workout </h4>
-              <div>
-                <label for="new-run-date"> Date: </label>
-                <input type="text" id="new-run-date" placeholder="MM/DD/YY e.g. 12/17/15" ng-model='runs.newRun.date'>
-              </div>
+           <form class="add-Run row well well-lg row-margin" ng-submit='runs.addRun()' ng-show="addRunForm">
+             <section class="pull-left col-md-8">
+              <h5> <strong> Log Run Workout </strong> </h4>
+                <table class="table-new-run-details">
+                <tr><th>
+                  Field
+                </th><th>
+                  Details
+                </th></tr>
 
-              <div>
-                <label for="new-run-distance"> Distance (miles): </label>
-                <input type="text" id="new-run-distance" placeholder="e.g 5" ng-model='runs.newRun.distance'>
-              </div>
+                <tr><td>
+                  <label for="new-run-date"> Date: </label>
+                  </td><td>
+                  <input type="text" id="new-run-date" placeholder="MM/DD/YY e.g. 12/17/15" ng-model='runs.newRun.date'>
+                </td></tr>
 
-              <div>
-                <label for="new-run-start_time"> Start Time: </label>
-                <input type="text" id="new-run-start_time" placeholder="(HH:MM) e.g. 17:00 " ng-model='runs.newRun.start_time'>
-              </div>
+                <tr><td>
+                  <label for="new-run-distance"> Distance (miles): </label>
+                </td><td>
+                  <input type="text" id="new-run-distance" placeholder="e.g 5" ng-model='runs.newRun.distance'>
+                </td></tr>
 
-              <div>
-                <label for="new-run-duration"> Duration (in minutes): </label>
-                <input type="text" id="new-run-duration" placeholder="e.g. 45" ng-model='runs.newRun.duration'>
-              </div>
+                <tr><td>
+                  <label for="new-run-start_time"> Start Time: </label>
+                </td><td>
+                  <input type="text" id="new-run-start_time" placeholder="(HH:MM) e.g. 17:00 " ng-model='runs.newRun.start_time'>
+                </td></tr>
 
-              <div>
-                <label for="new-run-route"> Route (description): </label>
-                <input type="text" id="new-run-route" placeholder="eg. full loop in Central Park" ng-model='runs.newRun.route'>
-              </div>
+                <tr><td>
+                  <label for="new-run-duration"> Duration (in minutes): </label>
+                </td><td>
+                  <input type="text" id="new-run-duration" placeholder="e.g. 45" ng-model='runs.newRun.duration'>
+                </td></tr>
 
-              <div>
-                <label for="new-run-type"> Run Type: </label>
-                <input type="text" id="new-run-type" placeholder="e.g. training or race" ng-model='runs.newRun.run_type'>
-              </div>
+                <tr><td>
+                  <label for="new-run-route"> Route (description): </label>
+                </td><td>
+                  <input type="text" id="new-run-route" placeholder="eg. full loop in Central Park" ng-model='runs.newRun.route'>
+                </td></tr>
 
-              <div>
-                <label for="new-run-comments"> Comments: </label>
-                <input type="text" id="new-run-comments" placeholder="e.g. warm weather, speed training" ng-model='runs.newRun.comments'>
-              </div>
+                <tr><td>
+                  <label for="new-run-type"> Run Type: </label>
+                </td><td>
+                  <input type="text" id="new-run-type" placeholder="e.g. training or race" ng-model='runs.newRun.run_type'>
+                </td></tr>
 
-              <div>
-                <label for="new-run-shoes"> Shoes: </label>
-                <input type="text" id="new-run-shoes" placeholder="e.g. Gel Kayano" ng-model='runs.newRun.shoes'>
-              </div>
+                <tr><td>
+                  <label for="new-run-comments"> Comments: </label>
+                  </td><td>
+                  <input type="text" id="new-run-comments" placeholder="e.g. warm weather, speed training" ng-model='runs.newRun.comments'>
+                </td></tr>
 
-              <div>
-                <input type="submit" value="Log Run Workout" class="md-button md-raised" ng-click="addRunForm=false">
-              </div>
-            </form>
-          </section>
+                <tr><td>
+                  <label for="new-run-shoes"> Shoes: </label>
+                </td><td>
+                  <input type="text" id="new-run-shoes" placeholder="e.g. Gel Kayano" ng-model='runs.newRun.shoes'>
+                </td></tr>
 
+              </table>
+                <div>
+                  <input type="submit" value="Log Run Workout" class="md-button md-raised" ng-click="addRunForm=false">
+                </div>
+             </section>
+           </form>
       </section>
 
       <div class='row'>
           <div class='col-md-4'>
-              <h3> About Logging your Runs </h3>
-              <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p>
+              <h3> Logging your Runs </h3>
+              <p> Easily log each of your running workouts.  Save details of each of your runs to help you train better. </p>
           </div>
 
           <div class='col-md-4'>
               <h3> Track Performance </h3>
-              <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p> Review your history of running workouts.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
 
           <div class='col-md-4'>
               <h3> Explore Races </h3>
-              <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p> Use the statists of your running log to determine your training plan for coming races.  Explore the race calendar to plan accordingly.</p>
           </div>
 
       </div> <!-- closing div class='row' -->
