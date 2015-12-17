@@ -39,11 +39,6 @@ router.route('/:id')
     }); // ends User.find
   }) // ends .get for /:id
 
-
-
-
-
-
 // END OF WORK IN PROGRESS
 
 // ONLY FOR EXAMPLE BELOW

@@ -83,7 +83,7 @@ function UsersController($http){
 
   // ***** Get & display the profile of a specific Run by ID  *****
   function getRunByID(runID){
-    // let runID = ($.data(document, "myUserID")); // PENDING PENDING
+    // let runID = ($.data(document, "myUserID")); // PENDING 
     console.log("running inside getRunByID");
     console.log("The userID = " + runID);
     $http
@@ -96,7 +96,7 @@ function UsersController($http){
     return;
   } // close function getUser()
 
-  getRunByID("566f725b14cc00dc1a4cd22c");
+  getRunByID("567255e6e60ad9f58938cc3a");
 
   // ***** Get & display the profile of a User  *****
   function getUser(){
@@ -129,7 +129,7 @@ function UsersController($http){
     let userID = ($.data(document, "myUserID"));
     console.log("Inside getRuns() => UserID = " + userID);
       $http
-      .get('http://localhost:3000/users/' + userID) // ?????
+      .get('http://localhost:3000/users/' + userID)
       .then(function(response){
         console.log("Inside getRuns() => list of User's myRuns listed below:");
         console.log(response.data[0].myRuns);
