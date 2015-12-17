@@ -72,9 +72,9 @@
 
         </div> <!-- close class="all-Users" ... -->
 
-
+        <!-- ******* VIEW USER PROFILE ******* -->
         <div class="user-profile row well well-lg row-margin" ng-show="viewProfile" ng-model='users.userData'>
-            <section class="pull-left col-md-8">
+          <section class="pull-left col-md-8">
             <h5> <strong> My Profile </strong> </h5>
             <table class="table-user-profile">
               <tr><th> Field                 </th><th> Details </th></tr>
@@ -88,18 +88,18 @@
             <button type="button" ng-click="editProfile=true" class="pull-left edit-profile-button" > Edit my Profile </button>
           </section>
 
-            <section class="pull-right col-md-4" style="text-align: center">
-              <div class="profile-photo-box">
-                <img src="{{users.userData[0].profile_photo}}" title="Profile Photo" class="profile-photo"/></a>
-              </div>
-            </section>
+          <section class="pull-right col-md-4" style="text-align: center">
+            <div class="profile-photo-box">
+              <img src="{{users.userData[0].profile_photo}}" title="Profile Photo" class="profile-photo"/></a>
+            </div>
+          </section>
 
         </div> <!-- close div class="user-profile"-->
 
         <!-- ******* VIEW RUNS FOR a USER ******* -->
         <div class="runs-list row well well-lg row-margin" ng-show="viewRuns">
              <h5> <strong> My Runs </strong> </h5>
-
+<td>         <button type="button" id="{{run._id}}" ng-click="viewRunProfile=true">View</button>
              <table>
                <tr>
                  <th> Action        </th>
@@ -109,28 +109,51 @@
                  <th> Duration (min)</th>
                  <th> Route         </th>
                  <th> Run Type      </th>
-                 <th> ID            </th>
                </tr>
 
                <tr ng-repeat="run in users.runData">
-                 <section>
-                 <td> <button ng-click="">View</button>
-                 <td> {{run.date}}       </td>
-                 <td> {{run.distance}}   </td>
-                 <td> {{run.start_time}} </td>
-                 <td> {{run.duration}}   </td>
-                 <td> {{run.route}}      </td>
-                 <td> {{run.run_type}}   </td>
-                 <td> {{run._id}}        </td>
-               </section>
+
+                   <td> <button type="button" id="{{run._id}}" ng:click="$parent.viewRunProfile=true">View</button>
+                   <td> {{run.date}}       </td>
+                   <td> {{run.distance}}   </td>
+                   <td> {{run.start_time}} </td>
+                   <td> {{run.duration}}   </td>
+                   <td> {{run.route}}      </td>
+                   <td> {{run.run_type}}   </td>
                </tr>
              </table>
-
-
         </div>
 
+
+<!-- <button type="button" ng-click="addRunForm=true"> Log Run Workout </button> ///
+ <form class="add-Run" ng-submit='runs.addRun()' ng-show="addRunForm"> /// -->
+
+        <!-- ******* VIEW SINGLE RUN DETAILS ===== WORK IN PROGRESS ******* -->
+        <div class="run-profile row well well-lg row-margin" ng-show="viewRunProfile">
+          <section class="pull-left col-md-8">
+            <h5> <strong> Run Details </strong> </h5>
+            <table class="table-run-details">
+              <tr><th> Field       </th><th> Details </th></tr>
+              <tr><td> Date:       </td><td> {{users.userData[0].username}} </td></tr>
+              <tr><td> Distance:   </td><td> {{users.userData[0].email}} </td></tr>
+              <tr><td> Start Time: </td><td> {{users.userData[0].user_description}} </td></tr>
+              <tr><td> Duration:   </td><td> {{users.userData[0].city}} </td></tr>
+              <tr><td> Route:      </td><td> {{users.userData[0].myRuns.length}}</td></tr>
+              <tr><td> Run Type:   </td><td> {{users.userData[0].city}} </td></tr>
+              <tr><td> Run Type:   </td><td> {{users.userData[0].city}} </td></tr>
+              <tr><td> Comments:   </td><td> {{users.userData[0].city}} </td></tr>
+              <tr><td> Shoes:      </td><td> {{users.userData[0].city}} </td></tr>
+            </table>
+
+            <button type="button" ng-click="editRun=true" class="pull-left edit-run-button" > Edit Run Workout </button>
+
+          </section>
+
+        </div> <!-- close div class="run-profile"-->
+
+
         <form class="login-User text-center" ng-submit="users.authenticateUser()" ng-show="Login" >
-            <h4> Log In Existing User</h4>
+            <h4> Existing User - Log In</h4>
             <div>
               <label for="login-username"> User Name: </label>
               <input type="text" id="login-username" placeholder="username" ng-model="users.loginUser.username" >
@@ -138,11 +161,11 @@
 
             <div>
               <label for="login-password"> Password: </label>
-              <input type="text" id="login-password" placeholder="password" ng-model="users.loginUser.password">
+              <input type="password" id="login-password" placeholder="password" ng-model="users.loginUser.password">
             </div>
 
             <div>
-              <input type="submit" value="Login" class="md-button md-raised" ng-click="Login=false">
+              <input type="submit"  value="Log In" class="md-button md-raised" id="login-button" ng-click="Login=false">
             </div>
         </form>
 
@@ -173,13 +196,6 @@
             </div>
         </form>
 
-
-        <!-- <div class="user-profile row well well-lg row-margin" ng-show="viewProfile" ng-model='users.userData'>
-            <section class="pull-left col-md-8">
-            <h5> <strong> My Profile </strong> </h5>
-            <table class="table-user-profile"> -->
-
-
         <form class="edit-User row well well-lg row-margin" ng-submit='users.editUser(); users.getUser()' ng-show="editProfile">
 
           <section class="pull-left col-md-8">
@@ -194,37 +210,37 @@
               <tr><td>
                 <label for="edit-user-username"> User Name: </label>
               </td><td>
-                <input type="text" id="edit-user-username" placeholder="Username" ng-model='users.editUserData.username'>
+                <input type="text" class="edit-user-field" id="edit-user-username" placeholder="Username" ng-model='users.editUserData.username'>
               </td></tr>
 
               <tr><td>
                 <label for="edit-user-email"> Email: </label>
               </td><td>
-                <input type="text" id="edit-user-email" placeholder="email@example.com" ng-model='users.editUserData.email'>
+                <input type="text" class="edit-user-field" id="edit-user-email" placeholder="email@example.com" ng-model='users.editUserData.email'>
               </td></tr>
 
               <tr><td>
                 <label for="edit-user-password"> Password: </label>
               </td><td>
-                <input type="text" id="edit-user-password" placeholder="password" ng-model='users.editUserData.password'>
+                <input type="text" class="edit-user-field" id="edit-user-password" placeholder="password" ng-model='users.editUserData.password'>
               </td></tr>
 
               <tr><td>
                 <label for="edit-user-city"> City: </label>
               </td><td>
-                <input type="text" id="edit-user-city" placeholder="City" ng-model='users.editUserData.city'>
+                <input type="text" class="edit-user-field" id="edit-user-city" placeholder="City" ng-model='users.editUserData.city'>
               </td></tr>
 
               <tr><td>
                 <label for="edit-user-description"> User Description: </label>
               </td><td>
-                <input type="text" id="edit-user-description" placeholder="100 char User Description" ng-model='users.editUserData.user_description'>
+                <input type="text" class="edit-user-field" id="edit-user-description" placeholder="100 char User Description" ng-model='users.editUserData.user_description'>
               </td></tr>
 
               <tr><td>
                 <label for="edit-user-photo"> Photo Link: </label>
               </td><td>
-              <input type="text" id="edit-user-photo" placeholder="photo link" ng-model='users.editUserData.profile_photo'>
+              <input type="text" class="edit-user-field" id="edit-user-photo" placeholder="photo link" ng-model='users.editUserData.profile_photo'>
               </td></tr>
             </table>
 

@@ -33,13 +33,20 @@ table {
   margin-top: 25px;
 }
 
+#login-button {
+  margin-top: 20px;
+}
+
+/*#edit-user-username{
+  width: 200px;
+}*/
+
 th {
   border-bottom: 1px solid gray;
   border-top: 1px solid gray;
   padding-top: 3px;
   padding-bottom: 3px;
 }
-
 
 td {
   padding-top: 2px;
@@ -50,10 +57,14 @@ td {
   border: 1px solid gray;
 }
 
+.run-profile {
+  border: 1px solid gray;
+}
+
 .edit-User {
   border: 1px solid gray;
 }
- 
+
 .runs-list {
   border: 1px solid gray;
 }
