@@ -53,6 +53,7 @@
 
         <!-- <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p> -->
 
+        <!-- ******* VIEW LIST of ALL USERS ******* -->
         <div class="all-Users row well well-lg row-margin" ng-show="viewAllUsers">
             <h5> <strong> List of All Users </strong> </h5>
 
@@ -88,11 +89,11 @@
             <button type="button" ng-click="editProfile=true" class="pull-left edit-profile-button" > Edit my Profile </button>
           </section>
 
-          <section class="pull-right col-md-4" style="text-align: center">
+          <!-- <section class="pull-right col-md-4" style="text-align: center">
             <div class="profile-photo-box">
               <img src="{{users.userData[0].profile_photo}}" title="Profile Photo" class="profile-photo"/></a>
             </div>
-          </section>
+          </section> -->
 
         </div> <!-- close div class="user-profile"-->
 
@@ -123,24 +124,20 @@
              </table>
         </div>
 
-
-<!-- <button type="button" ng-click="addRunForm=true"> Log Run Workout </button> ///
- <form class="add-Run" ng-submit='runs.addRun()' ng-show="addRunForm"> /// -->
-
         <!-- ******* VIEW SINGLE RUN DETAILS ===== WORK IN PROGRESS ******* -->
-        <div class="run-profile row well well-lg row-margin" ng-show="viewRunProfile">
+        <div class="run-profile row well well-lg row-margin" ng-show="viewRunProfile" ng-model='users.runIDdata'>
           <section class="pull-left col-md-8">
             <h5> <strong> Run Details </strong> </h5>
             <table class="table-run-details">
               <tr><th> Field       </th><th> Details </th></tr>
-              <tr><td> Date:       </td><td> {{users.userData[0].date}} </td></tr>
-              <tr><td> Distance:   </td><td> {{users.userData[0].distance}} </td></tr>
-              <tr><td> Start Time: </td><td> {{users.userData[0].start_time}} </td></tr>
-              <tr><td> Duration:   </td><td> {{users.userData[0].duration}} </td></tr>
-              <tr><td> Route:      </td><td> {{users.userData[0].route}}</td></tr>
-              <tr><td> Run Type:   </td><td> {{users.userData[0].run_type}} </td></tr>
-              <tr><td> Comments:   </td><td> {{users.userData[0].comments}} </td></tr>
-              <tr><td> Shoes:      </td><td> {{users.userData[0].shoes}} </td></tr>
+              <tr><td> Date:       </td><td> {{users.runIDdata[0].date}} </td></tr>
+              <tr><td> Distance:   </td><td> {{users.runIDdata[0].distance}} </td></tr>
+              <tr><td> Start Time: </td><td> {{users.runIDdata[0].start_time}} </td></tr>
+              <tr><td> Duration:   </td><td> {{users.runIDdata[0].duration}} </td></tr>
+              <tr><td> Route:      </td><td> {{users.runIDdata[0].route}}</td></tr>
+              <tr><td> Run Type:   </td><td> {{users.runIDdata[0].run_type}} </td></tr>
+              <tr><td> Comments:   </td><td> {{users.runIDdata[0].comments}} </td></tr>
+              <tr><td> Shoes:      </td><td> {{users.runIDdata[0].shoes}} </td></tr>
             </table>
 
             <span>
@@ -311,7 +308,7 @@
           <div class='col-md-4'>
               <h3> About Logging your Runs </h3>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <!-- <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p> -->
+              <p> Testing Angular with the sum of 5+ 5 is: {{5+5}}</p>
           </div>
 
           <div class='col-md-4'>

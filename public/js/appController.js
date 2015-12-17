@@ -22,14 +22,19 @@ function UsersController($http){
   self.userData = []; // userData[] gets its data from getUser()
   self.getUser = getUser; // function () defined below
 
-  self.editUser = editUser; //  WORK IN PROGRESS
+  self.editUser = editUser; //
   self.editUserData = {}; //editUserData{} gets it data from edit-user Form @ index.html and passes it to editUser()
-
-  // self.newUserCreated = [];
 
   self.runData = []; // runData[] gets its data from getRuns()
   self.myRunsData = []; // runData[] gets its data from getRuns()
   self.getRuns = getRuns; // function () defined below
+
+  self.getRunByID = getRunByID; // function () defined below
+  self.runID = []; // runID[] gets its data from ng-click in runs-list table @ index.html
+  console.log(self.runID);
+  self.runIDdata = []; // runIDdata[] gets its data from getRunByID()
+  console.log("runIDdata listed below:");
+  console.log(self.runIDdata);
 
   getAllUsers();
   console.log("just invoked getAllUsers()");
@@ -74,6 +79,24 @@ function UsersController($http){
       console.log(self.loggedStatus);
     });
   }
+
+
+  // ***** Get & display the profile of a specific Run by ID  *****
+  function getRunByID(runID){
+    // let runID = ($.data(document, "myUserID")); // PENDING PENDING
+    console.log("running inside getRunByID");
+    console.log("The userID = " + runID);
+    $http
+    .get('http://localhost:3000/runs/'+ runID)
+    .then(function(response){
+      console.log("Running inside getRunByID()");
+      console.log(response.data);
+      self.runIDdata = response.data;
+    }); // close .then
+    return;
+  } // close function getUser()
+
+  getRunByID("566f725b14cc00dc1a4cd22c");
 
   // ***** Get & display the profile of a User  *****
   function getUser(){
@@ -141,9 +164,6 @@ function UsersController($http){
 
 RunsController.$inject = ['$http'];
 
-// getRuns();
-// console.log('Just ran getRuns() inside RunsController');
-
 function RunsController($http){
   let self = this;
   // Our CREED functions
@@ -153,12 +173,6 @@ function RunsController($http){
   self.newRun = {}; // newRun{} gets its data from add-run Form @ index.html and passes it to addRun()
   // self.editRun = editRun;
   // self.currentUserID = [];
-
-  // self.runData = []; // runData[] gets its data from getRuns() DELETED IN LAST EDIT
-  // self.getRuns = getRuns; // function () defined below DELETED IN LAST EDIT
-
-  // getRuns();
-  // console.log("just ran getRuns() from inside RunsController");
 
   function addRun(){
     let userID = ($.data(document, "myUserID"));
